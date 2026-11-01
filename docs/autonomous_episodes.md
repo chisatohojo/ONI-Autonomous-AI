@@ -1,5 +1,7 @@
 # Phase 2：合成環境の自律エージェント基盤
 
+本書はPhase 2互換runnerの契約です。Phase 3の別runnerに専用プロセスの期限、構造化主張、同条件比較を追加しました。[比較設計](policy_comparison.md)を参照してください。以下の未実装記述は元のPhase 2 runnerについての制限です。
+
 対象は任意の合成資源モデルだけです。実ゲーム接続、外部LLM、課金、学習済み攻略Policyはありません。実装は[episodes.py](../src/oni_ai/episodes.py)、[policy.py](../src/oni_ai/policy.py)、[episode_knowledge.py](../src/oni_ai/episode_knowledge.py)、[benchmarks.py](../src/oni_ai/benchmarks.py)です。
 
 ## 処理の流れ

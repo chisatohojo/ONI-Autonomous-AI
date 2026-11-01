@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ONI_Autonomous_AI"
-version = "0.2.0"
-description = "Offline autonomous agent episodes with evidence validation and synthetic evaluation"
+version = "0.3.0"
+description = "Paired offline Policy research with bounded processes and structured evidence"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = []

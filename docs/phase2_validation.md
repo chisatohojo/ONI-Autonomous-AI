@@ -1,5 +1,7 @@
 # Phase 2 検証記録
 
+履歴補足：Phase 2の27fb339b9d9508630e3216debe4f3f02650f18feはユーザー承認後にpush済みです。以下は当時のローカル検証記録として保持します。
+
 実施日：2026-11-01（Asia/Tokyo）。開始HEAD：d003276be4e9b68977b4fb2d5b789ddd39063ffc。既存originを継続使用し、新規clone/initや履歴の書換えは行っていません。Phase 1のpushは承認後完了済みです。
 
 ## チェック結果

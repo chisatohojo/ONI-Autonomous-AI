@@ -9,12 +9,19 @@ from pathlib import Path
 from oni_ai.adapters import demo_adapter
 from oni_ai.benchmarks import BENCHMARK_VERSION, run_benchmark, sample_fixture
 from oni_ai.catalog import audit_database, import_catalog, migrate_database, read_rules
+from oni_ai.comparison import (
+    freeze_comparison,
+    prepare_comparison,
+    run_comparison,
+    verify_comparison,
+)
 from oni_ai.contracts import Decision, strict_json
 from oni_ai.episodes import EpisodeConfig, replay_episode, run_episode
 from oni_ai.evaluation import replay_log, run_experiment
 from oni_ai.knowledge import KnowledgeRepository, create_database
 from oni_ai.policy import SeededTestPolicy
 from oni_ai.protocol import operation_catalog
+from oni_ai.research import replay_research
 from oni_ai.simulation import fixture_names, load_fixture
 
 
@@ -82,6 +89,18 @@ def main(argv: list[str] | None = None) -> int:
         commands.add_parser(
             name, help="Inspect and replay a completed autonomous episode"
         ).add_argument("log", type=Path)
+    prepare = commands.add_parser("comparison-prepare", help="Preregister an offline paired study")
+    prepare.add_argument("output_dir", type=Path)
+    prepare.add_argument("--db", type=Path)
+    for name in ("comparison-freeze", "compare"):
+        command = commands.add_parser(name, help="Freeze development or run a comparison group")
+        command.add_argument("plan", type=Path)
+        if name == "compare":
+            command.add_argument(
+                "--group", required=True, choices=["development", "regression", "heldout"]
+            )
+    commands.add_parser("comparison-verify").add_argument("report", type=Path)
+    commands.add_parser("research-replay").add_argument("log", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "init-db":
@@ -99,7 +118,17 @@ def main(argv: list[str] | None = None) -> int:
             observation = demo_adapter().read_resource("oni://colony/status")
             print(json.dumps(asdict(observation), ensure_ascii=False, indent=2))
         else:
-            if args.command == "migrate-db":
+            if args.command == "comparison-prepare":
+                result = prepare_comparison(args.output_dir, args.db)
+            elif args.command == "comparison-freeze":
+                result = freeze_comparison(args.plan)
+            elif args.command == "compare":
+                result = run_comparison(args.plan, args.group)
+            elif args.command == "comparison-verify":
+                result = verify_comparison(args.report)
+            elif args.command == "research-replay":
+                result = replay_research(args.log)
+            elif args.command == "migrate-db":
                 migrate_database(args.source, args.destination)
                 result = {"created": str(args.destination), "original_unchanged": True}
             elif args.command == "import-catalog":

@@ -1,4 +1,4 @@
-# ONI_Autonomous_AI — offline Phase 2 workspace rules
+# ONI_Autonomous_AI — offline Phase 3 workspace rules
 
 - Work only in this independent repository. Do not change ONI, its MOD directories,
   existing saves, Steam settings, or other projects.
@@ -10,6 +10,9 @@
   strategy or silently treat synthetic parameters as actual ONI statistics.
 - Autonomous synthetic episodes with a replaceable test Policy are authorized. Do not
   send fixture labels to the Policy or call external LLM APIs/paid services.
+- Paired Policy comparisons, exact structured claims and spawned worker time limits are
+  authorized. Freeze source/settings before heldout evaluation; do not tune on its results.
+- Model adapters are design/mock only. No model service startup, installation or API calls.
 - Keep actual game adapters and action executors unimplemented until scope is explicitly
   authorized and applicable Steam/Klei conditions are resolved.
 - Use Python 3.12, pinned dependencies and uv.lock. Do not commit secrets, tool

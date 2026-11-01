@@ -2,7 +2,7 @@
 
 Oxygen Not Included（ONI）の自律プレイAIを研究する独立プロジェクトです。ゲームルール・設備仕様・操作仕様を事前知識とし、将来の判断・計画・改善はAIが担う設計です。Klei・Valveの公式プロジェクトではありません。
 
-**Phase 2（0.2.0）：合成環境で観測・知識検索・計画・検証・模擬実行・評価・記憶を繰り返すエージェント基盤。実ゲーム・外部LLMには接続しません。**
+**Phase 3（0.3.0）：複数Policyを同条件で比較し、構造化主張・プロセス期限・開発/評価分離を検証する合成研究環境。実ゲーム・外部LLMには接続しません。**
 
 ## セットアップ（Windows / PowerShell）
 
@@ -82,6 +82,24 @@ Policyにはfixture名・元process名・評価seedを渡しません。提案�
 
 開発用と評価用は別の初期値範囲・seed名前空間です。評価には未知値や未見processを含めます。replayはPolicy/API/元DBなしで検索・検証・遷移・停止・評価を再計算します。詳細は[Phase 2設計](docs/autonomous_episodes.md)と[検証記録](docs/phase2_validation.md)を参照してください。
 
+## Phase 3のPolicy比較
+
+```powershell
+.\.venv\Scripts\python.exe -m oni_ai comparison-prepare data/local/my-study --db data/local/phase1.sqlite3
+.\.venv\Scripts\python.exe -m oni_ai compare data/local/my-study/plan.json --group development
+.\.venv\Scripts\python.exe -m oni_ai comparison-freeze data/local/my-study/plan.json
+.\.venv\Scripts\python.exe -m oni_ai compare data/local/my-study/plan.json --group regression
+.\.venv\Scripts\python.exe -m oni_ai compare data/local/my-study/plan.json --group heldout
+.\.venv\Scripts\python.exe -m oni_ai comparison-verify data/local/my-study/heldout/report.json
+.\.venv\Scripts\python.exe -m oni_ai research-replay data/local/my-study/heldout/203-0-lookahead.jsonl
+```
+
+my-studyには未作成の出力先を指定します。--dbは省略可能です。比較基準は既存のSeededTestPolicy、新Policyは深さ2・上位8候補の汎用モデル探索です。固定攻略順や資源別の正解表はありません。同じ初期状態・観測範囲・Policy seed・操作上限・時間予算で比較し、開発reportとソースを固定してから評価を解禁します。
+
+Policyは専用プロセスで動き、期限超過時は終了と一時ファイル削除を確認します。構造化主張は取得値・statusと照合します。自然言語の完全な意味検証やOS sandboxではありません。Phase 1/2のCLI・ログ・DBは維持し、Phase 3のresearchログを別形式にしています。
+
+開発36件・既公開seedの回帰36件・新seedの保留48件、計120件を実行し全件再現できました。保留の目標達成は探索0/24、新Policy3/24ですが、需要充足の代理指標は悪化しており、総合改善や実ONIの攻略性能を主張しません。JSON/CSV/Markdownの詳細はローカルのdata/local/phase3-study-20261102にあり、Git対象外です。設計・限界・結果は下記文書を参照してください。
+
 ## 成果物
 
 - [OniMcp調査報告書](docs/oni_mcp_research.md)：固定コミット、API、プロトコル、依存、制限、ライセンス
@@ -95,11 +113,14 @@ Policyにはfixture名・元process名・評価seedを渡しません。提案�
 - [観測・行動JSON Schema](src/oni_ai/data/experiment_schemas.json)
 - [Phase 2変更判断](docs/phase2_decisions.md)、[自律エピソード設計・LLM接続案](docs/autonomous_episodes.md)
 - [Policy用JSON Schema](src/oni_ai/data/policy_schemas.json)、[Phase 2検証記録](docs/phase2_validation.md)
+- [Phase 3変更判断](docs/phase3_decisions.md)、[Policy比較・検証設計](docs/policy_comparison.md)
+- [Phase 3検証記録](docs/phase3_validation.md)、[比較結果の抜粋JSON](docs/phase3_results.json)
+- [Phase 4のLLM接続計画・ローカル/クラウド比較](docs/phase4_model_plan.md)
 
 調査したOniMcpコミット：`14c08591cbd0bf66cd0f53b37bfb498bdef4abf6`（0.2.6）。READMEのMCP互換性説明とコードに不一致があり、固定コードでは `2025-11-25` のみサポートしています。1.0未満で変更可能性が高く、将来は実行時manifestが最終仕様です。
 
 ## 作業範囲
 
-ゲーム本体、MODフォルダ、既存セーブ、Steam設定には触れません。実ゲーム接続・操作、外部LLM API、有料サービス、公開サーバー、.NET/Rust導入は行いません。GitHub originは既存のものを使用します。Phase 1のd003276は承認済みでpush完了、今回のPhase 2のpushは別途承認を待ちます。秘密情報は保存せず、将来必要な設定は環境変数等へ分離します。
+ゲーム本体、MODフォルダ、既存セーブ、Steam設定には触れません。実ゲーム接続・操作、外部LLM API、有料サービス、公開サーバー、.NET/Rust導入は行いません。GitHub originは既存のものを使用します。Phase 1のd003276とPhase 2の27fb339は承認後push完了、今回のPhase 3のpushは別途承認を待ちます。秘密情報は保存せず、将来必要な設定は環境変数等へ分離します。
 
 合成実験の結果を実ゲームの攻略性能とは扱いません。実ゲームへの接続・自律操作に進む前に適用条件・必要な許諾と利用者の承認を確認します。

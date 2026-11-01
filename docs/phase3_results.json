@@ -1,0 +1,1495 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-02",
+  "timezone": "Asia/Tokyo",
+  "scope": "MOCK_SYNTHETIC_NOT_GAME_DATA",
+  "start_head": "27fb339b9d9508630e3216debe4f3f02650f18fe",
+  "plan_digest": "9a6e358c5e1eeb977396217074ed619b1cac164f3c3146ff91261b268ceb837d",
+  "config": {
+    "error_limit": 4,
+    "max_steps": 30,
+    "memory_limit": 16,
+    "no_progress_limit": 12,
+    "repeat_limit": 6
+  },
+  "budget": {
+    "call_seconds": 2.0,
+    "max_calls": 400,
+    "max_input_bytes": 1000000,
+    "max_output_bytes": 65536,
+    "startup_seconds": 10.0,
+    "total_seconds": 60.0
+  },
+  "policy_seeds": [
+    0,
+    1,
+    2
+  ],
+  "groups": {
+    "development": {
+      "environment_seeds": [
+        0,
+        1,
+        2,
+        17,
+        42,
+        101
+      ],
+      "by_policy": {
+        "exploration": {
+          "episodes": 18,
+          "stop_reasons": {
+            "GOAL_REACHED": 8,
+            "MAX_STEPS": 1,
+            "NO_PROGRESS": 9
+          },
+          "distributions": {
+            "progress.goal_met": {
+              "max": 1.0,
+              "mean": 0.4444444444444444,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.49690399499995325
+            },
+            "survival.synthetic_demand_proxy": {
+              "max": 1.0,
+              "mean": 0.16666666666666666,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.37267799624996495
+            },
+            "validity.attempts": {
+              "max": 30.0,
+              "mean": 15.555555555555555,
+              "min": 9.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.659036256998597
+            },
+            "validity.invalid_action_rate": {
+              "max": 0.3,
+              "mean": 0.0362932912628653,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.07407815245275526
+            },
+            "execution.ticks": {
+              "max": 30.0,
+              "mean": 14.88888888888889,
+              "min": 9.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.3529730979759576
+            },
+            "execution.failure_steps": {
+              "max": 20.0,
+              "mean": 7.444444444444445,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 6.22916279573768
+            },
+            "adaptation.intent_changes": {
+              "max": 28.0,
+              "mean": 14.222222222222221,
+              "min": 7.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.482857685100146
+            },
+            "adaptation.fewer_failure_reasons_next_step": {
+              "max": 5.0,
+              "mean": 0.7777777777777778,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 1.2717247935843996
+            },
+            "adaptation.accepted_after_rejection": {
+              "max": 3.0,
+              "mean": 0.3888888888888889,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.7556372504853024
+            },
+            "uncertainty.unknown_resource_attempts": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.undeclared_unknown_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.claim_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.final": {
+              "max": 60.0,
+              "mean": 22.666666666666668,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 21.746008573733455
+            },
+            "resource_balance.oxygen.synthetic_consumption": {
+              "max": 60.0,
+              "mean": 25.666666666666668,
+              "min": 11.0,
+              "missing": 0,
+              "n": 18,
+              "std": 13.19090595827292
+            },
+            "resource_balance.food.final": {
+              "max": 41.0,
+              "mean": 14.055555555555555,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 15.421745910031726
+            },
+            "resource_balance.food.synthetic_consumption": {
+              "max": 45.0,
+              "mean": 23.444444444444443,
+              "min": 13.0,
+              "missing": 0,
+              "n": 18,
+              "std": 7.064954369768681
+            },
+            "resource_balance.energy.final": {
+              "max": 72.0,
+              "mean": 42.05555555555556,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 18.89877192430539
+            },
+            "resource_balance.energy.synthetic_consumption": {
+              "max": 75.0,
+              "mean": 35.833333333333336,
+              "min": 5.0,
+              "missing": 0,
+              "n": 18,
+              "std": 18.08390936102528
+            },
+            "resource_balance.water.final": {
+              "max": 72.0,
+              "mean": 34.333333333333336,
+              "min": 7.0,
+              "missing": 0,
+              "n": 18,
+              "std": 19.801795653705526
+            },
+            "resource_balance.water.synthetic_consumption": {
+              "max": 53.0,
+              "mean": 23.77777777777778,
+              "min": 5.0,
+              "missing": 0,
+              "n": 18,
+              "std": 12.91233499649573
+            },
+            "resource_balance.research.final": {
+              "max": 20.0,
+              "mean": 9.944444444444445,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 6.013616237083439
+            },
+            "resource_balance.research.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.work.final": {
+              "max": 14.0,
+              "mean": 6.777777777777778,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.836844191039759
+            },
+            "resource_balance.work.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            }
+          }
+        },
+        "lookahead": {
+          "episodes": 18,
+          "stop_reasons": {
+            "GOAL_REACHED": 18
+          },
+          "distributions": {
+            "progress.goal_met": {
+              "max": 1.0,
+              "mean": 1.0,
+              "min": 1.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "survival.synthetic_demand_proxy": {
+              "max": 1.0,
+              "mean": 1.0,
+              "min": 1.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "validity.attempts": {
+              "max": 24.0,
+              "mean": 12.055555555555555,
+              "min": 9.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.357780719169239
+            },
+            "validity.invalid_action_rate": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "execution.ticks": {
+              "max": 24.0,
+              "mean": 12.055555555555555,
+              "min": 9.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.357780719169239
+            },
+            "execution.failure_steps": {
+              "max": 7.0,
+              "mean": 1.0555555555555556,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 1.8400550179643549
+            },
+            "adaptation.intent_changes": {
+              "max": 23.0,
+              "mean": 11.055555555555555,
+              "min": 8.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.357780719169239
+            },
+            "adaptation.fewer_failure_reasons_next_step": {
+              "max": 2.0,
+              "mean": 0.4444444444444444,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.6849348892187752
+            },
+            "adaptation.accepted_after_rejection": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.unknown_resource_attempts": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.undeclared_unknown_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.claim_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.final": {
+              "max": 34.0,
+              "mean": 20.88888888888889,
+              "min": 2.0,
+              "missing": 0,
+              "n": 18,
+              "std": 10.466289212349485
+            },
+            "resource_balance.oxygen.synthetic_consumption": {
+              "max": 48.0,
+              "mean": 24.11111111111111,
+              "min": 18.0,
+              "missing": 0,
+              "n": 18,
+              "std": 6.715561438338478
+            },
+            "resource_balance.food.final": {
+              "max": 36.0,
+              "mean": 15.38888888888889,
+              "min": 4.0,
+              "missing": 0,
+              "n": 18,
+              "std": 9.793075154804763
+            },
+            "resource_balance.food.synthetic_consumption": {
+              "max": 48.0,
+              "mean": 24.11111111111111,
+              "min": 18.0,
+              "missing": 0,
+              "n": 18,
+              "std": 6.715561438338478
+            },
+            "resource_balance.energy.final": {
+              "max": 31.0,
+              "mean": 14.38888888888889,
+              "min": 5.0,
+              "missing": 0,
+              "n": 18,
+              "std": 7.2582435041428655
+            },
+            "resource_balance.energy.synthetic_consumption": {
+              "max": 60.0,
+              "mean": 35.72222222222222,
+              "min": 22.0,
+              "missing": 0,
+              "n": 18,
+              "std": 10.529353444092248
+            },
+            "resource_balance.water.final": {
+              "max": 61.0,
+              "mean": 45.888888888888886,
+              "min": 18.0,
+              "missing": 0,
+              "n": 18,
+              "std": 13.710858992819803
+            },
+            "resource_balance.water.synthetic_consumption": {
+              "max": 32.0,
+              "mean": 18.0,
+              "min": 7.0,
+              "missing": 0,
+              "n": 18,
+              "std": 6.674994798166929
+            },
+            "resource_balance.research.final": {
+              "max": 9.0,
+              "mean": 4.5,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 2.6299556396765835
+            },
+            "resource_balance.research.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.work.final": {
+              "max": 14.0,
+              "mean": 11.0,
+              "min": 9.0,
+              "missing": 0,
+              "n": 18,
+              "std": 1.632993161855452
+            },
+            "resource_balance.work.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "paired_environment_mean_difference": {
+        "progress.goal_met": {
+          "max": 1.0,
+          "mean": 0.5555555555555556,
+          "min": 0.33333333333333337,
+          "missing": 0,
+          "n": 6,
+          "std": 0.31426968052735443
+        },
+        "progress.work_delta": {
+          "max": 10.0,
+          "mean": 4.222222222222222,
+          "min": 1.666666666666667,
+          "missing": 0,
+          "n": 6,
+          "std": 2.8262438537726453
+        },
+        "survival.synthetic_demand_proxy": {
+          "max": 1.0,
+          "mean": 0.8333333333333334,
+          "min": 0.6666666666666667,
+          "missing": 0,
+          "n": 6,
+          "std": 0.16666666666666663
+        },
+        "validity.attempts": {
+          "max": 1.9999999999999982,
+          "mean": -3.5000000000000004,
+          "min": -9.000000000000002,
+          "missing": 0,
+          "n": 6,
+          "std": 3.562926387738658
+        },
+        "validity.invalid_action_rate": {
+          "max": 0.0,
+          "mean": -0.0362932912628653,
+          "min": -0.12777777777777777,
+          "missing": 0,
+          "n": 6,
+          "std": 0.04732958583502664
+        }
+      },
+      "goal_successes_by_environment": {
+        "0": {
+          "exploration": 2,
+          "lookahead": 3
+        },
+        "1": {
+          "exploration": 2,
+          "lookahead": 3
+        },
+        "2": {
+          "exploration": 2,
+          "lookahead": 3
+        },
+        "17": {
+          "exploration": 0,
+          "lookahead": 3
+        },
+        "42": {
+          "exploration": 0,
+          "lookahead": 3
+        },
+        "101": {
+          "exploration": 2,
+          "lookahead": 3
+        }
+      }
+    },
+    "regression": {
+      "environment_seeds": [
+        0,
+        1,
+        2,
+        17,
+        42,
+        101
+      ],
+      "by_policy": {
+        "exploration": {
+          "episodes": 18,
+          "stop_reasons": {
+            "ERROR_LIMIT": 4,
+            "GOAL_REACHED": 3,
+            "NO_PROGRESS": 11
+          },
+          "distributions": {
+            "progress.goal_met": {
+              "max": 1.0,
+              "mean": 0.16666666666666666,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.37267799624996495
+            },
+            "survival.synthetic_demand_proxy": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 3,
+              "n": 15,
+              "std": 0.0
+            },
+            "validity.attempts": {
+              "max": 29.0,
+              "mean": 11.166666666666666,
+              "min": 5.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.2094998693625945
+            },
+            "validity.invalid_action_rate": {
+              "max": 0.8,
+              "mean": 0.4353607918263091,
+              "min": 0.16666666666666666,
+              "missing": 0,
+              "n": 18,
+              "std": 0.21311850424876327
+            },
+            "execution.ticks": {
+              "max": 19.0,
+              "mean": 6.944444444444445,
+              "min": 1.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.248819734444198
+            },
+            "execution.failure_steps": {
+              "max": 29.0,
+              "mean": 11.166666666666666,
+              "min": 5.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.2094998693625945
+            },
+            "adaptation.intent_changes": {
+              "max": 27.0,
+              "mean": 9.833333333333334,
+              "min": 3.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.220153254455275
+            },
+            "adaptation.fewer_failure_reasons_next_step": {
+              "max": 7.0,
+              "mean": 2.9444444444444446,
+              "min": 1.0,
+              "missing": 0,
+              "n": 18,
+              "std": 1.5801625170364324
+            },
+            "adaptation.accepted_after_rejection": {
+              "max": 6.0,
+              "mean": 2.3333333333333335,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 1.5986105077709065
+            },
+            "uncertainty.unknown_resource_attempts": {
+              "max": 12.0,
+              "mean": 1.4444444444444444,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 2.871743996293352
+            },
+            "uncertainty.undeclared_unknown_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.claim_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.final": {
+              "max": 5.0,
+              "mean": 0.4166666666666667,
+              "min": 0.0,
+              "missing": 6,
+              "n": 12,
+              "std": 1.3819269959814167
+            },
+            "resource_balance.oxygen.synthetic_consumption": {
+              "max": 41.0,
+              "mean": 15.583333333333334,
+              "min": 3.0,
+              "missing": 6,
+              "n": 12,
+              "std": 15.124253884260062
+            },
+            "resource_balance.food.final": {
+              "max": 1.0,
+              "mean": 0.16666666666666666,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.37267799624996495
+            },
+            "resource_balance.food.synthetic_consumption": {
+              "max": 15.0,
+              "mean": 5.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.123105625617661
+            },
+            "resource_balance.energy.final": {
+              "max": 82.0,
+              "mean": 21.555555555555557,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 20.361243746725794
+            },
+            "resource_balance.energy.synthetic_consumption": {
+              "max": 16.0,
+              "mean": 5.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 5.270462766947299
+            },
+            "resource_balance.water.final": {
+              "max": 29.0,
+              "mean": 9.733333333333333,
+              "min": 0.0,
+              "missing": 3,
+              "n": 15,
+              "std": 8.865413445268954
+            },
+            "resource_balance.water.synthetic_consumption": {
+              "max": 9.0,
+              "mean": 2.1666666666666665,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.4034296427770228
+            },
+            "resource_balance.research.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 9,
+              "n": 9,
+              "std": 0.0
+            },
+            "resource_balance.research.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.work.final": {
+              "max": 13.0,
+              "mean": 1.8333333333333333,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.017323597731316
+            },
+            "resource_balance.work.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            }
+          }
+        },
+        "lookahead": {
+          "episodes": 18,
+          "stop_reasons": {
+            "GOAL_REACHED": 6,
+            "NO_PROGRESS": 10,
+            "REPEATED_ACTION": 2
+          },
+          "distributions": {
+            "progress.goal_met": {
+              "max": 1.0,
+              "mean": 0.3333333333333333,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.4714045207910317
+            },
+            "survival.synthetic_demand_proxy": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "validity.attempts": {
+              "max": 15.0,
+              "mean": 10.833333333333334,
+              "min": 3.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.593976442141304
+            },
+            "validity.invalid_action_rate": {
+              "max": 0.08333333333333333,
+              "mean": 0.009259259259259259,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.026189140043946204
+            },
+            "execution.ticks": {
+              "max": 15.0,
+              "mean": 10.722222222222221,
+              "min": 3.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.5715784800989847
+            },
+            "execution.failure_steps": {
+              "max": 15.0,
+              "mean": 10.777777777777779,
+              "min": 3.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.5832256659104664
+            },
+            "adaptation.intent_changes": {
+              "max": 14.0,
+              "mean": 9.055555555555555,
+              "min": 2.0,
+              "missing": 0,
+              "n": 18,
+              "std": 3.763453234319988
+            },
+            "adaptation.fewer_failure_reasons_next_step": {
+              "max": 4.0,
+              "mean": 2.5,
+              "min": 1.0,
+              "missing": 0,
+              "n": 18,
+              "std": 1.1666666666666667
+            },
+            "adaptation.accepted_after_rejection": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.unknown_resource_attempts": {
+              "max": 3.0,
+              "mean": 0.3888888888888889,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.8906233078822998
+            },
+            "uncertainty.undeclared_unknown_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "uncertainty.claim_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 6,
+              "n": 12,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.synthetic_consumption": {
+              "max": 53.0,
+              "mean": 25.0,
+              "min": 3.0,
+              "missing": 6,
+              "n": 12,
+              "std": 20.314198646923455
+            },
+            "resource_balance.food.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.food.synthetic_consumption": {
+              "max": 15.0,
+              "mean": 5.833333333333333,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.633812924819281
+            },
+            "resource_balance.energy.final": {
+              "max": 47.0,
+              "mean": 18.166666666666668,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 12.38839062276542
+            },
+            "resource_balance.energy.synthetic_consumption": {
+              "max": 21.0,
+              "mean": 8.38888888888889,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 6.325775217217684
+            },
+            "resource_balance.water.final": {
+              "max": 39.0,
+              "mean": 9.066666666666666,
+              "min": 0.0,
+              "missing": 3,
+              "n": 15,
+              "std": 10.330967471098187
+            },
+            "resource_balance.water.synthetic_consumption": {
+              "max": 12.0,
+              "mean": 3.8333333333333335,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.536885862938733
+            },
+            "resource_balance.research.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 9,
+              "n": 9,
+              "std": 0.0
+            },
+            "resource_balance.research.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.work.final": {
+              "max": 11.0,
+              "mean": 3.5,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 4.958158260214506
+            },
+            "resource_balance.work.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 18,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "paired_environment_mean_difference": {
+        "progress.goal_met": {
+          "max": 0.6666666666666667,
+          "mean": 0.16666666666666669,
+          "min": 0.0,
+          "missing": 0,
+          "n": 6,
+          "std": 0.2545875386086578
+        },
+        "progress.work_delta": {
+          "max": 6.666666666666666,
+          "mean": 1.6666666666666665,
+          "min": 0.0,
+          "missing": 0,
+          "n": 6,
+          "std": 2.5458753860865775
+        },
+        "survival.synthetic_demand_proxy": {
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "missing": 0,
+          "n": 6,
+          "std": 0.0
+        },
+        "validity.attempts": {
+          "max": 4.666666666666667,
+          "mean": -0.3333333333333335,
+          "min": -5.333333333333334,
+          "missing": 0,
+          "n": 6,
+          "std": 3.377485367460148
+        },
+        "validity.invalid_action_rate": {
+          "max": -0.25,
+          "mean": -0.4261015325670498,
+          "min": -0.5722222222222222,
+          "missing": 0,
+          "n": 6,
+          "std": 0.11910440667591153
+        }
+      },
+      "goal_successes_by_environment": {
+        "0": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "1": {
+          "exploration": 2,
+          "lookahead": 3
+        },
+        "2": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "17": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "42": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "101": {
+          "exploration": 1,
+          "lookahead": 3
+        }
+      }
+    },
+    "heldout": {
+      "environment_seeds": [
+        203,
+        307,
+        409,
+        503,
+        607,
+        709,
+        811,
+        907
+      ],
+      "by_policy": {
+        "exploration": {
+          "episodes": 24,
+          "stop_reasons": {
+            "ERROR_LIMIT": 8,
+            "NO_PROGRESS": 16
+          },
+          "distributions": {
+            "progress.goal_met": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "survival.synthetic_demand_proxy": {
+              "max": 1.0,
+              "mean": 0.08333333333333333,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.2763853991962833
+            },
+            "validity.attempts": {
+              "max": 19.0,
+              "mean": 10.25,
+              "min": 5.0,
+              "missing": 0,
+              "n": 24,
+              "std": 4.064582799419067
+            },
+            "validity.invalid_action_rate": {
+              "max": 0.8,
+              "mean": 0.5583701901813357,
+              "min": 0.25,
+              "missing": 0,
+              "n": 24,
+              "std": 0.19208792224250182
+            },
+            "execution.ticks": {
+              "max": 12.0,
+              "mean": 5.208333333333333,
+              "min": 1.0,
+              "missing": 0,
+              "n": 24,
+              "std": 3.439708886260903
+            },
+            "execution.failure_steps": {
+              "max": 19.0,
+              "mean": 10.25,
+              "min": 5.0,
+              "missing": 0,
+              "n": 24,
+              "std": 4.064582799419067
+            },
+            "adaptation.intent_changes": {
+              "max": 18.0,
+              "mean": 8.916666666666666,
+              "min": 3.0,
+              "missing": 0,
+              "n": 24,
+              "std": 4.433928531474343
+            },
+            "adaptation.fewer_failure_reasons_next_step": {
+              "max": 5.0,
+              "mean": 3.0416666666666665,
+              "min": 1.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.6196493104647343
+            },
+            "adaptation.accepted_after_rejection": {
+              "max": 4.0,
+              "mean": 2.25,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.6393596310755
+            },
+            "uncertainty.unknown_resource_attempts": {
+              "max": 9.0,
+              "mean": 1.4166666666666667,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 2.396467307424734
+            },
+            "uncertainty.undeclared_unknown_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "uncertainty.claim_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.final": {
+              "max": 2.0,
+              "mean": 0.375,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.7534642216677135
+            },
+            "resource_balance.oxygen.synthetic_consumption": {
+              "max": 15.0,
+              "mean": 5.041666666666667,
+              "min": 1.0,
+              "missing": 0,
+              "n": 24,
+              "std": 3.6455357021370065
+            },
+            "resource_balance.food.final": {
+              "max": 3.0,
+              "mean": 0.25,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.7216878364870322
+            },
+            "resource_balance.food.synthetic_consumption": {
+              "max": 7.0,
+              "mean": 2.875,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.8099838857477895
+            },
+            "resource_balance.energy.final": {
+              "max": 48.0,
+              "mean": 9.75,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 14.56093518058965
+            },
+            "resource_balance.energy.synthetic_consumption": {
+              "max": 4.0,
+              "mean": 0.6666666666666666,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.1426091000668406
+            },
+            "resource_balance.water.final": {
+              "max": 18.0,
+              "mean": 9.0,
+              "min": 0.0,
+              "missing": 18,
+              "n": 6,
+              "std": 6.708203932499369
+            },
+            "resource_balance.water.synthetic_consumption": {
+              "max": 2.0,
+              "mean": 0.16666666666666666,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.5527707983925666
+            },
+            "resource_balance.research.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 6,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.research.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "resource_balance.work.final": {
+              "max": 4.0,
+              "mean": 0.375,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.9492321458245431
+            },
+            "resource_balance.work.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            }
+          }
+        },
+        "lookahead": {
+          "episodes": 24,
+          "stop_reasons": {
+            "GOAL_REACHED": 3,
+            "NO_PROGRESS": 20,
+            "REPEATED_ACTION": 1
+          },
+          "distributions": {
+            "progress.goal_met": {
+              "max": 1.0,
+              "mean": 0.125,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.33071891388307384
+            },
+            "survival.synthetic_demand_proxy": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "validity.attempts": {
+              "max": 14.0,
+              "mean": 12.083333333333334,
+              "min": 8.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.578941276791368
+            },
+            "validity.invalid_action_rate": {
+              "max": 0.07142857142857142,
+              "mean": 0.002976190476190476,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.014273308105097379
+            },
+            "execution.ticks": {
+              "max": 14.0,
+              "mean": 12.041666666666666,
+              "min": 8.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.5405401289446792
+            },
+            "execution.failure_steps": {
+              "max": 14.0,
+              "mean": 12.083333333333334,
+              "min": 8.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.578941276791368
+            },
+            "adaptation.intent_changes": {
+              "max": 11.0,
+              "mean": 9.333333333333334,
+              "min": 7.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.1785113019775793
+            },
+            "adaptation.fewer_failure_reasons_next_step": {
+              "max": 5.0,
+              "mean": 3.25,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.3919410907075054
+            },
+            "adaptation.accepted_after_rejection": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "uncertainty.unknown_resource_attempts": {
+              "max": 9.0,
+              "mean": 1.125,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 2.634901958960396
+            },
+            "uncertainty.undeclared_unknown_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "uncertainty.claim_rejections": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "resource_balance.oxygen.synthetic_consumption": {
+              "max": 23.0,
+              "mean": 6.583333333333333,
+              "min": 1.0,
+              "missing": 0,
+              "n": 24,
+              "std": 6.1570871540219585
+            },
+            "resource_balance.food.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "resource_balance.food.synthetic_consumption": {
+              "max": 7.0,
+              "mean": 3.125,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 2.027159342528357
+            },
+            "resource_balance.energy.final": {
+              "max": 40.0,
+              "mean": 9.416666666666666,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 13.937110731982994
+            },
+            "resource_balance.energy.synthetic_consumption": {
+              "max": 8.0,
+              "mean": 2.4583333333333335,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 2.886450627019666
+            },
+            "resource_balance.water.final": {
+              "max": 12.0,
+              "mean": 7.166666666666667,
+              "min": 2.0,
+              "missing": 18,
+              "n": 6,
+              "std": 4.844813951249544
+            },
+            "resource_balance.water.synthetic_consumption": {
+              "max": 4.0,
+              "mean": 0.4583333333333333,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 1.2240359017973652
+            },
+            "resource_balance.research.final": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 6,
+              "n": 18,
+              "std": 0.0
+            },
+            "resource_balance.research.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            },
+            "resource_balance.work.final": {
+              "max": 8.0,
+              "mean": 2.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 3.0
+            },
+            "resource_balance.work.synthetic_consumption": {
+              "max": 0.0,
+              "mean": 0.0,
+              "min": 0.0,
+              "missing": 0,
+              "n": 24,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "paired_environment_mean_difference": {
+        "progress.goal_met": {
+          "max": 1.0,
+          "mean": 0.125,
+          "min": 0.0,
+          "missing": 0,
+          "n": 8,
+          "std": 0.33071891388307384
+        },
+        "progress.work_delta": {
+          "max": 8.0,
+          "mean": 1.625,
+          "min": 0.0,
+          "missing": 0,
+          "n": 8,
+          "std": 2.845256774196507
+        },
+        "survival.synthetic_demand_proxy": {
+          "max": 0.0,
+          "mean": -0.08333333333333333,
+          "min": -0.3333333333333333,
+          "missing": 0,
+          "n": 8,
+          "std": 0.14433756729740643
+        },
+        "validity.attempts": {
+          "max": 4.666666666666667,
+          "mean": 1.8333333333333335,
+          "min": -1.0,
+          "missing": 0,
+          "n": 8,
+          "std": 1.5898986690282428
+        },
+        "validity.invalid_action_rate": {
+          "max": -0.4361344537815126,
+          "mean": -0.5553939997051452,
+          "min": -0.7000000000000001,
+          "missing": 0,
+          "n": 8,
+          "std": 0.07374065178618201
+        }
+      },
+      "goal_successes_by_environment": {
+        "203": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "307": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "409": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "503": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "607": {
+          "exploration": 0,
+          "lookahead": 3
+        },
+        "709": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "811": {
+          "exploration": 0,
+          "lookahead": 0
+        },
+        "907": {
+          "exploration": 0,
+          "lookahead": 0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Descriptive statistics only; policy-seed repeats are clustered by environment.",
+    "Published Phase 2 evaluation seeds are regression data.",
+    "Heldout outcomes were not used to tune either policy.",
+    "Goal gains do not imply demand satisfaction or ONI performance gains."
+  ]
+}
