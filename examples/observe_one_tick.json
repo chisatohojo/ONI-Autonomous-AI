@@ -1,0 +1,15 @@
+[
+  {
+    "action": {
+      "schema_version": 1,
+      "action_id": "observe-1",
+      "context_id": "synthetic:normal",
+      "expected_tick": 0,
+      "kind": "wait",
+      "ticks": 1
+    },
+    "rationale": "Observe one arbitrary synthetic tick. This is a diagnostic input, not a strategy.",
+    "evidence_refs": ["fixture:normal"],
+    "unknowns": ["All model quantities are synthetic; actual ONI behavior is not represented."]
+  }
+]

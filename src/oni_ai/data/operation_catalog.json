@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "source_commit": "14c08591cbd0bf66cd0f53b37bfb498bdef4abf6",
+  "source_accessed_on": "2026-11-01",
+  "protocol_version": "2025-11-25",
+  "documentation_discrepancy": "UNRESOLVED",
+  "notice": "Static source review only. Not a runtime manifest or permission grant. Synthetic actions have no direct live mapping.",
+  "sources": [
+    {
+      "path": "mods/OniMcp/Tools/Impl/Core/GameControlTools.cs",
+      "git_blob_sha": "7e3746d66234e59133e64f6bb12942ad8dac40e0",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Core/GameControlTools.cs",
+      "content_sha256": "924ce7f8f94a14063041f0600557711f6dd42867787e1b27c30005f0a2e6bf0a",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY",
+      "hash_scope": "Complete connector-returned UTF-8 source, LF; original source not bundled"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Core/GameSpeedTools.cs",
+      "git_blob_sha": "199bbced3ba61fcb387c04bd3554274730220267",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Core/GameSpeedTools.cs",
+      "content_sha256": "50da5c459b21badabcbc0a6904e2234d377888336cd429a34cb03b7509e7ba9c",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY",
+      "hash_scope": "Complete connector-returned UTF-8 source, LF; original source not bundled"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Orders/OrdersTools.cs",
+      "git_blob_sha": "58911ec04fc2782829a314ebce5247bd82263d53",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Orders/OrdersTools.cs",
+      "content_sha256": "d589616d9711311cec823d17a88c22797cf8ed83e95e7a2a1735e894b1ce2f92",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY",
+      "hash_scope": "Complete connector-returned UTF-8 source, LF; original source not bundled"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Management/ResearchTools.cs",
+      "git_blob_sha": "6ea2de476d718cb75458e5302f224cc111f629b8",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Management/ResearchTools.cs",
+      "content_sha256": "bd62d4c8c99709afc44f02de2446ab45e751d99520bcedfe69d43cd4afe9cc7b",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY",
+      "hash_scope": "Complete connector-returned UTF-8 source, LF; original source not bundled"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Entry/BuildingControlTools.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Entry/BuildingControlTools.cs",
+      "git_blob_sha": "3cd393be97e4e7885305dfe80b0c52a8a31e8d87",
+      "content_sha256": "59ba7df791061d99913269260af7e0edc7ade7643f0976933908fc703ce21c40",
+      "lines": 308,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Core/OniToolRegistry.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Core/OniToolRegistry.cs",
+      "git_blob_sha": "ffdba34bc71db635678d56ec00cc2df4836e0f29",
+      "content_sha256": "fa69e32398cd3ccf1850aa6ab315cbe38194fa43dd7dc7389d9ba5f3245ab362",
+      "lines": 416,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY"
+    },
+    {
+      "path": "mods/OniMcp/Server/McpHttpServerProtocolTasks.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Server/McpHttpServerProtocolTasks.cs",
+      "git_blob_sha": "21b17e854f6945d0baad238d633ab982aea275c6",
+      "content_sha256": "ee6c6ebd3cd21bad875796362b8742b0996bbba87e39ccd171fab94602bc66cd",
+      "lines": 391,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Core/OniResourceRegistry.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Core/OniResourceRegistry.cs",
+      "git_blob_sha": "7133559ac84aaa18750c20ca8a91edd758ed342e",
+      "content_sha256": "70161bfd7df72fb01a44dbfb5990fc3673a823f069e689fd326951ca28e79f91",
+      "lines": 466,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object",
+      "accessed_on": "2026-11-01",
+      "target_game_version": "UNKNOWN",
+      "redistribution": "REFERENCE_ONLY"
+    }
+  ],
+  "operations": [
+    {
+      "operation_id": "pause",
+      "tool": "game_control",
+      "domain": "speed",
+      "action": "pause",
+      "support": "CODE_PATH_PRESENT",
+      "code_path": "mods/OniMcp/Tools/Impl/Core/GameSpeedTools.cs",
+      "locator": "ControlGameSpeed switch -> Pause()",
+      "confirmation": "No confirm check in Pause; Game and SpeedControlScreen required",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    },
+    {
+      "operation_id": "resume",
+      "tool": "game_control",
+      "domain": "speed",
+      "action": "resume",
+      "support": "CODE_PATH_PRESENT",
+      "code_path": "mods/OniMcp/Tools/Impl/Core/GameSpeedTools.cs",
+      "locator": "ControlGameSpeed switch -> Resume()",
+      "confirmation": "No confirm check in Resume; Game and SpeedControlScreen required",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    },
+    {
+      "operation_id": "bounded_wait",
+      "tool": "game_control",
+      "domain": "speed",
+      "action": "step_until",
+      "support": "CODE_PATH_PRESENT",
+      "code_path": "mods/OniMcp/Tools/Impl/Core/GameSpeedTools.cs",
+      "locator": "ControlGameSpeed switch -> StepUntil(args)",
+      "confirmation": "Child implementation/context guards not fully audited; no live permission",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    },
+    {
+      "operation_id": "build_preview",
+      "tool": "building_control",
+      "domain": "planning",
+      "action": "preview",
+      "support": "CODE_ROUTE_PRESENT",
+      "code_path": "mods/OniMcp/Tools/Entry/BuildingControlTools.cs",
+      "locator": "ControlBuilding planning routing; full child behavior not runtime checked",
+      "confirmation": "Child rules apply; not proof of a side-effect-free runtime",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    },
+    {
+      "operation_id": "direct_build_area",
+      "tool": "building_control",
+      "domain": "planning",
+      "action": "build_area",
+      "support": "DIRECT_PUBLIC_ROUTE_FORBIDDEN",
+      "code_path": "mods/OniMcp/Tools/Entry/BuildingControlTools.cs",
+      "locator": "Exact planning requires virtual-file edit context",
+      "confirmation": "Do not bypass with confirm=true",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    },
+    {
+      "operation_id": "research_set",
+      "tool": "research_set",
+      "domain": "management",
+      "action": "set",
+      "support": "INTERNAL_ONLY",
+      "code_path": "mods/OniMcp/Tools/Core/OniToolRegistry.cs",
+      "locator": "OniToolRegistry registers public aggregates, not research_set",
+      "confirmation": "No direct tools/call; full typed virtual-file route not audited",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    },
+    {
+      "operation_id": "orders_diagnose",
+      "tool": "orders_control",
+      "domain": "task",
+      "action": "diagnose",
+      "support": "CODE_ROUTE_PRESENT",
+      "code_path": "mods/OniMcp/Tools/Impl/Orders/OrdersTools.cs",
+      "locator": "ControlOrders schema and handler",
+      "confirmation": "Read-like child; runtime not verified",
+      "runtime_status": "UNVERIFIED",
+      "live_execution_allowed": false
+    }
+  ]
+}

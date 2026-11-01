@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "catalog_id": "phase1-official-historical-v1",
+  "notice": "Original fact summaries only. Historical source builds, never assumed current. No gameplay rates invented.",
+  "resource_ids": [],
+  "sources": [
+    {
+      "source_id": "klei_210320",
+      "kind": "OFFICIAL",
+      "url": "https://kleiforums.com/game-updates/oni-alpha/210320-r221/",
+      "revision": "ONI build 210320",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "6b6422e0120e6eb89af847ceccb7f80642a25eeea47f43d32ed66cf685094b6a",
+      "target_version": "210320",
+      "locator": "Update Information: planter box side screen",
+      "redistribution": "REFERENCE_ONLY",
+      "rights_note": "Original article/asset redistribution permission UNKNOWN. Store only independently written factual summaries and URL; no article body or assets.",
+      "hash_scope": "Selected source excerpt in ignored .tools/phase1-evidence; not the complete webpage",
+      "note": "Historical release-note evidence; not current-build or runtime verification."
+    },
+    {
+      "source_id": "klei_326232",
+      "kind": "OFFICIAL",
+      "url": "https://kleiforums.com/game-updates/oni-alpha/326232-r734/",
+      "revision": "ONI build 326232",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "1b95a01bce7200407215f6e8bb62eec1909552f0c1250786c12b83e317bfe220",
+      "target_version": "326232",
+      "locator": "Fixes and Improvements / Buildings: breath-holding and dead batteries",
+      "redistribution": "REFERENCE_ONLY",
+      "rights_note": "Original article/asset redistribution permission UNKNOWN. Store only independently written factual summaries and URL; no article body or assets.",
+      "hash_scope": "Selected source excerpt in ignored .tools/phase1-evidence; not the complete webpage",
+      "note": "Historical release-note evidence; not current-build or runtime verification."
+    },
+    {
+      "source_id": "klei_348553",
+      "kind": "OFFICIAL",
+      "url": "https://kleiforums.com/game-updates/oni-alpha/348553-r798/",
+      "revision": "ONI build 348553",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "7a3656427e905e2afe77934016b9b30cc6a6c9fcf6a4579de7264c226f7a5a84",
+      "target_version": "348553",
+      "locator": "Update Information opening paragraph: fixed temperatures become minimum output temperatures",
+      "redistribution": "REFERENCE_ONLY",
+      "rights_note": "Original article/asset redistribution permission UNKNOWN. Store only independently written factual summaries and URL; no article body or assets.",
+      "hash_scope": "Selected source excerpt in ignored .tools/phase1-evidence; not the complete webpage",
+      "note": "Historical release-note evidence; not current-build or runtime verification."
+    },
+    {
+      "source_id": "klei_659901",
+      "kind": "OFFICIAL",
+      "url": "https://kleiforums.com/game-updates/oni-alpha/659901-r2496/",
+      "revision": "ONI build 659901",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "966e5f3f82e7281698872f6ff223303f8024e4551e8bf5c12db128750ad00c6f",
+      "target_version": "659901",
+      "locator": "QoL & bugs for all versions: build menu and Research screen search",
+      "redistribution": "REFERENCE_ONLY",
+      "rights_note": "Original article/asset redistribution permission UNKNOWN. Store only independently written factual summaries and URL; no article body or assets.",
+      "hash_scope": "Selected source excerpt in ignored .tools/phase1-evidence; not the complete webpage",
+      "note": "Historical release-note evidence; not current-build or runtime verification."
+    },
+    {
+      "source_id": "aliases",
+      "kind": "UPSTREAM_CODE",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Build/BuildPlanTextAliases.cs",
+      "revision": "14c08591cbd0bf66cd0f53b37bfb498bdef4abf6",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "8fc08162a2c4356611ebc3f205724ff3ebf319becbad796e2bfabfe544772d00",
+      "note": "Interface vocabulary only; not a verified game building definition.",
+      "target_version": "UNKNOWN",
+      "locator": "PlanBuildingAliases()",
+      "redistribution": "REFERENCE_ONLY",
+      "rights_note": "Upstream AUL source; interface labels/IDs only, original source not bundled.",
+      "hash_scope": "Full UTF-8 upstream text, LF; see Phase 0 source_evidence.json"
+    }
+  ],
+  "buildings": [
+    {
+      "variant_id": "PlanterBox@210320@UNKNOWN",
+      "building_id": "PlanterBox",
+      "game_version": "210320",
+      "dlc_scope": "UNKNOWN",
+      "identity_status": "SOURCE_REVIEWED",
+      "identity_source_id": "aliases",
+      "identity_locator": "PlanBuildingAliases(): PlanterBox mapping. Historical ID correspondence not runtime verified.",
+      "facts": {
+        "name": {
+          "value": "planter box",
+          "status": "SOURCE_REVIEWED",
+          "source_id": "klei_210320",
+          "locator": "Update Information: planter box side screen",
+          "note": "Independently written summary of version-limited evidence; no runtime verification."
+        }
+      }
+    },
+    {
+      "variant_id": "Battery@326232@UNKNOWN",
+      "building_id": "Battery",
+      "game_version": "326232",
+      "dlc_scope": "UNKNOWN",
+      "identity_status": "SOURCE_REVIEWED",
+      "identity_source_id": "aliases",
+      "identity_locator": "PlanBuildingAliases(): Battery mapping. Historical ID correspondence not runtime verified.",
+      "facts": {
+        "name": {
+          "value": "battery",
+          "status": "SOURCE_REVIEWED",
+          "source_id": "klei_326232",
+          "locator": "Fixes and Improvements / Buildings: breath-holding and dead batteries",
+          "note": "Independently written summary of version-limited evidence; no runtime verification."
+        }
+      }
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "oxygen_breath_holding",
+      "domain": "oxygen",
+      "game_version": "326232",
+      "dlc_scope": "UNKNOWN",
+      "statement": "At build 326232, Duplicants hold their breath in unbreathable areas when low on oxygen.",
+      "parameters": {},
+      "status": "SOURCE_REVIEWED",
+      "source_id": "klei_326232",
+      "locator": "Fixes and Improvements / Buildings: breath-holding and dead batteries"
+    },
+    {
+      "rule_id": "food_plant_requirement_ui",
+      "domain": "food",
+      "game_version": "210320",
+      "dlc_scope": "UNKNOWN",
+      "statement": "At build 210320, the Planter Box side screen exposes additional plant requirement details; the note does not specify rates.",
+      "parameters": {},
+      "status": "SOURCE_REVIEWED",
+      "source_id": "klei_210320",
+      "locator": "Update Information: planter box side screen",
+      "variant_id": "PlanterBox@210320@UNKNOWN"
+    },
+    {
+      "rule_id": "power_depleted_batteries",
+      "domain": "power",
+      "game_version": "326232",
+      "dlc_scope": "UNKNOWN",
+      "statement": "At build 326232, depleted batteries do not provide power to transformers.",
+      "parameters": {},
+      "status": "SOURCE_REVIEWED",
+      "source_id": "klei_326232",
+      "locator": "Fixes and Improvements / Buildings: breath-holding and dead batteries",
+      "variant_id": "Battery@326232@UNKNOWN"
+    },
+    {
+      "rule_id": "water_minimum_output",
+      "domain": "water",
+      "game_version": "348553",
+      "dlc_scope": "UNKNOWN",
+      "statement": "Build 348553 changes formerly fixed output temperatures to minima; hotter inputs can raise outputs. The Water Sieve example is 40 degrees Celsius.",
+      "parameters": {
+        "example_building_label": "Water Sieve",
+        "minimum_output_temperature": 40,
+        "unit": "degC"
+      },
+      "status": "SOURCE_REVIEWED",
+      "source_id": "klei_348553",
+      "locator": "Update Information opening paragraph: fixed temperatures become minimum output temperatures"
+    },
+    {
+      "rule_id": "research_search_initialisms",
+      "domain": "research",
+      "game_version": "659901",
+      "dlc_scope": "ALL_DECLARED",
+      "statement": "Build 659901 adds fuzzy, synonym and initialism search to the build menu and Research screen. This describes UI search, not research prerequisites.",
+      "parameters": {
+        "example_query": "mm",
+        "example_result_label": "Microbe Musher"
+      },
+      "status": "SOURCE_REVIEWED",
+      "source_id": "klei_659901",
+      "locator": "QoL & bugs for all versions: build menu and Research screen search"
+    }
+  ]
+}

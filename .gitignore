@@ -22,5 +22,6 @@ data/local/
 *.key
 OniMcpConfig.json
 *.log
+*.jsonl
 .DS_Store
 Thumbs.db

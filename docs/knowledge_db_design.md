@@ -1,4 +1,4 @@
-# 設備知識DB設計（Schema 1）
+# 設備知識DB設計（Schema 1/2）
 
 Phase 0は設備の知識を根拠付きで保持し、AIへ検索結果を渡す基盤です。攻略手順・設備配置・最適解は埋め込みません。ゲーム状態の一時的な在庫や研究進捗と、設備の恒久仕様は分離します。
 
@@ -12,7 +12,7 @@ Phase 0は設備の知識を根拠付きで保持し、AIへ検索結果を渡�
 | building_variant | variant_id、building_id、game_version、dlc_scope、identity_status、identity_source_id、identity_locator | ゲーム版とDLC範囲ごとの設備識別子と根拠 |
 | fact | variant_id + field、value_json、unit、status、source_id、locator、note | 属性ごとの値・単位・出典・検証状態 |
 
-全テーブルをSQLite STRICTとし、外部キー、主キー、JSON型・数値条件を制約します。user_version=1と専用application_idを読み取り時に確認し、未知のDBを誤って開かないようにします。スキーマ移行は未実装で、異なる版は明示的に拒否します。
+全テーブルをSQLite STRICTとし、外部キー、主キー、JSON型・数値条件を制約します。user_version=1/2と専用application_idを読み取り時に確認し、未知の版は拒否します。Phase 1の新規DBはSchema 2です。Schema 1は書き換えず読めます。移行はmigrate-dbで別ファイルへコピーする明示的な操作に限ります。
 
 同一building_idでもゲーム版・DLC組合せごとにvariantを分けます。dlc_scopeは将来「BASE_GAME」「有効DLCのソート済みID集合」等の正規表現に統一する予定です。現段階では資料不足のため `UNKNOWN` を使用し、どのゲーム版にも合うワイルドカードにはしません。バージョン・DLCフィルタは完全一致です。
 
@@ -30,7 +30,7 @@ Phase 0は設備の知識を根拠付きで保持し、AIへ検索結果を渡�
 | environment_constraints | 配列 | 圧力、液没、空間、床・支え、雰囲気等の条件 |
 | research | 配列 | 研究IDとAND/OR関係。観測中のunlocked boolとは別 |
 
-配列要素を取り込む自動インポータは未実装です。SQLはトップレベルの型・出典を検証し、配列内部の業務ルールまでは検証しません。今後インポータでレート単位（kg/s等）、有限値、material tag、条件、部分UNKNOWNを検証し、異なる根拠が混じる場合はitem単位の出典を必須にします。検証器ができるまで複雑な数値・配列の自動登録は行いません。
+Phase 1のcatalog validatorは配列内の型、単位、有限値、material ID、重複、項目単位の根拠、温度上下限、研究条件のALL/ANYを検査します。部分的な数量UNKNOWNはnullとし、既知の0と区別します。SQL制約だけでは配列内の業務ルールを検証できないため、import-catalog前の検証とaudit-dbを併用します。入力は梱包済みのレビュー済みcatalogのみで、Webデータの自動取り込みはしません。
 
 ## UNKNOWNと検証状態
 
@@ -59,10 +59,30 @@ AIは各factのstatusを必ず確認し、UNKNOWN・CONFLICTEDに依存する判
 
 `KnowledgeRepository.search(query, game_version=None, dlc_scope=None, limit=20)` はID・名称・用途の部分一致を返します。SQLパラメータを束縛し、%と_を通常文字としてエスケープします。空queryと範囲外limitを拒否、上限100、返却順を固定します。SQLite LIKEの英字大小無視を利用し、非ASCIIの大小・表記揺れ・日本語読みの正規化は未実装です。
 
-読み取りは `mode=ro` と `PRAGMA query_only=ON`。自動作成・暗黙の修復をしません。初期化だけが明示的な書込みで、ファイルを排他的に作成し、既存DBを上書きしません。DBはローカル生成物でGit対象外、SQLとseedをバージョン管理します。
+読み取りは `mode=ro` と `PRAGMA query_only=ON`。自動作成・暗黙の修復をしません。初期化・コピー移行・catalog取込みだけが明示的な書込みです。新規出力は排他的に作成し、既存ファイルを上書きしません。DBはローカル生成物でGit対象外、SQLとseed/catalogをバージョン管理します。
 
 テストでは一時SQLiteを使用し、UNKNOWNの維持、出典、数値型と単位、SQL注入、版の厳密フィルタ、読み取り専用、上書き防止、DB整合性を確認します。ネットワークsocketを遮断し、ゲームデータに依存しません。
 
-## 次の拡張
+## Schema 2の追加と互換性
 
-source取得許諾を確認した後、公式資料または承認された観測exportから、用途・定義を項目単位で追加します。Wiki等を使う場合はそのライセンス・revision・一次資料との整合も確認します。JSON配列の検証器、多言語alias、複数の競合主張、履歴、バージョン移行、ゲームルール・操作仕様の別テーブルは、必要なデータが得られた段階で追加します。
+schema.sqlは元のSchema 1を維持し、[schema_v2.sql](../src/oni_ai/data/schema_v2.sql)で補助テーブルを追加します。source/building_variant/factの列と既存行は変えません。
+
+| テーブル | 内容 |
+| --- | --- |
+| source_review | sourceの対象版、根拠箇所、再配布判断、権利メモ、hash範囲 |
+| game_rule | 酸素/食料/電力/水/研究の版限定の事実、パラメータ、出典、status |
+| rule_binding | 設備バリアントと同じ版/DLC範囲の動作ルールへの関連 |
+| resource_identifier | 配列内で使用するmaterial IDの登録。採用前の正規化を明示 |
+| catalog_import | catalog IDと内容digest。完全一致の再取込みはno-op、異なる内容の同IDは拒否 |
+
+移行は元DBをmode=roで開いてSQLite backupで新規DBにコピーし、そのコピーへトランザクションで追加します。元の独自行・注記・UNKNOWNは保持します。destinationが存在する場合は停止します。Schema 2から別のSchema 2へのコピーも可能です。
+
+既存sourceには対象版UNKNOWNとREFERENCE_ONLYのレビュー行を追加します。これは再配布許諾を推定するものではありません。既存の未検証な数値は消さず、auditで版の根拠不足を指摘します。Schema 1の読取結果では新しいreview情報はnullですが、取得日等の既存source情報は返します。
+
+catalog取込みは全件検証後に1トランザクションで実施し、途中の衝突は全件rollbackします。出典ID衝突も黙って上書きしません。取込み後は名前だけの元seed3件に加え、Batteryの新IDとPlanterBoxの版別記録、5ルールを保持します。件数と未採用事項は[出典レビュー](phase1_sources.md)を参照してください。
+
+source metadataとルールを設備属性と分離し、UI改善を設備の環境条件として転用しません。ビルド番号は根拠資料の対象版であって実機検証の宣言ではありません。過去ビルドと現行MODによるID対応の関連はSOURCE_REVIEWEDにとどめます。SOURCE_REVIEWEDやREFERENCE_ONLYをGAME_VERIFIEDや包括的転載許可として利用しません。
+
+## Phase 2以降の拡張
+
+特定のゲーム版を検証できる公式資料または使用が認められたexportから、設備の用途・定義を項目単位で追加します。Wiki等を使う場合はライセンス・revision・一次資料との整合も確認します。多言語alias、競合主張の複数保持、履歴、実ゲーム版間の移行は今後の課題です。合成fixtureの任意の量・レートを本DBへ登録しません。

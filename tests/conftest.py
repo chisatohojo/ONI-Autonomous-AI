@@ -9,7 +9,7 @@ from oni_ai.knowledge import create_database
 @pytest.fixture(autouse=True)
 def no_network(monkeypatch):
     def blocked(*args, **kwargs):
-        raise AssertionError("Phase 0 tests must not use network sockets")
+        raise AssertionError("Offline tests must not use network sockets")
 
     monkeypatch.setattr(socket, "socket", blocked)
     monkeypatch.setattr(socket, "create_connection", blocked)

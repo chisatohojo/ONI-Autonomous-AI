@@ -21,7 +21,7 @@ FIELDS = (
     "research",
 )
 APPLICATION_ID = 1330530625
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 @dataclass(frozen=True)
@@ -35,6 +35,9 @@ class Fact:
     source_sha256: str | None
     locator: str | None
     note: str
+    source_accessed_on: str | None = None
+    source_target_version: str | None = None
+    redistribution: str | None = None
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -46,6 +49,9 @@ class Fact:
             "source_sha256": self.source_sha256,
             "locator": self.locator,
             "note": self.note,
+            "source_accessed_on": self.source_accessed_on,
+            "source_target_version": self.source_target_version,
+            "redistribution": self.redistribution,
         }
 
 
@@ -136,6 +142,9 @@ def create_database(path: Path) -> None:
                                 else "No verified evidence collected in Phase 0.",
                             ),
                         )
+            connection.executescript(
+                files("oni_ai").joinpath("data/schema_v2.sql").read_text(encoding="utf-8")
+            )
     except BaseException:
         path.unlink(missing_ok=True)
         raise
@@ -149,8 +158,9 @@ class KnowledgeRepository:
         self._connection.row_factory = sqlite3.Row
         self._connection.execute("PRAGMA query_only = ON")
         version = self._connection.execute("PRAGMA user_version").fetchone()[0]
+        self._schema_version = version
         app_id = self._connection.execute("PRAGMA application_id").fetchone()[0]
-        if version != SCHEMA_VERSION or app_id != APPLICATION_ID:
+        if version not in {1, SCHEMA_VERSION} or app_id != APPLICATION_ID:
             self.close()
             raise ValueError("Unsupported knowledge database identity/schema version")
 
@@ -196,10 +206,22 @@ class KnowledgeRepository:
         return tuple(self._building(row) for row in rows)
 
     def _building(self, row: sqlite3.Row) -> BuildingKnowledge:
+        review_fields = (
+            "v.target_version, v.redistribution"
+            if self._schema_version == 2
+            else "NULL AS target_version, NULL AS redistribution"
+        )
+        review_join = (
+            "LEFT JOIN source_review v ON v.source_id=f.source_id"
+            if self._schema_version == 2
+            else ""
+        )
         claims = self._connection.execute(
-            """
-            SELECT f.*, s.url, s.revision, s.content_sha256 FROM fact AS f
+            f"""
+            SELECT f.*, s.url, s.revision, s.content_sha256, s.accessed_on, {review_fields}
+            FROM fact AS f
             LEFT JOIN source AS s ON s.source_id = f.source_id
+            {review_join}
             WHERE f.variant_id = ? ORDER BY f.field
             """,
             (row["variant_id"],),
@@ -226,6 +248,9 @@ class KnowledgeRepository:
                     source_sha256=claim["content_sha256"],
                     locator=claim["locator"],
                     note=claim["note"],
+                    source_accessed_on=claim["accessed_on"],
+                    source_target_version=claim["target_version"],
+                    redistribution=claim["redistribution"],
                 )
                 for claim in claims
             ),

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ONI_Autonomous_AI"
-version = "0.0.1"
-description = "Offline knowledge and mock observation foundation for ONI AI research"
+version = "0.1.0"
+description = "Evidence-preserving knowledge and synthetic offline evaluation for ONI AI research"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = []

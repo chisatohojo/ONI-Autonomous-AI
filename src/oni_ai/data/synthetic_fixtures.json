@@ -1,0 +1,164 @@
+{
+  "base": {
+    "schema_version": 1,
+    "provenance": "MOCK_SYNTHETIC_NOT_GAME_DATA",
+    "model_version": "synthetic-resource-model/1",
+    "fixture_id": "base",
+    "description": "Synthetic model; all values deliberately arbitrary, not ONI rates or assets.",
+    "units": "arbitrary_synthetic_units_per_tick_NOT_ONI",
+    "resources": {
+      "oxygen": 10,
+      "food": 10,
+      "energy": 10,
+      "water": 30,
+      "research": 0,
+      "work": 0
+    },
+    "demand": {
+      "oxygen": 2,
+      "food": 2
+    },
+    "thresholds": {
+      "oxygen": 2,
+      "food": 2,
+      "energy": 2,
+      "water": 2
+    },
+    "work_target": 10,
+    "processes": {
+      "oxygen_unit": {
+        "enabled": true,
+        "blocked": false,
+        "requires_research": 0,
+        "inputs": {
+          "energy": 1,
+          "water": 1
+        },
+        "outputs": {
+          "oxygen": 4
+        }
+      },
+      "food_unit": {
+        "enabled": true,
+        "blocked": false,
+        "requires_research": 0,
+        "inputs": {
+          "energy": 1,
+          "water": 1
+        },
+        "outputs": {
+          "food": 4
+        }
+      },
+      "power_unit": {
+        "enabled": true,
+        "blocked": false,
+        "requires_research": 0,
+        "inputs": {},
+        "outputs": {
+          "energy": 5
+        }
+      },
+      "research_unit": {
+        "enabled": false,
+        "blocked": false,
+        "requires_research": 0,
+        "inputs": {
+          "energy": 1,
+          "water": 1
+        },
+        "outputs": {
+          "research": 1
+        }
+      },
+      "work_unit": {
+        "enabled": true,
+        "blocked": false,
+        "requires_research": 0,
+        "inputs": {
+          "energy": 1
+        },
+        "outputs": {
+          "work": 1
+        }
+      },
+      "water_unit": {
+        "enabled": false,
+        "blocked": false,
+        "requires_research": 0,
+        "inputs": {
+          "energy": 1
+        },
+        "outputs": {
+          "water": 4
+        }
+      }
+    }
+  },
+  "scenarios": {
+    "normal": {
+      "description": "No initial shortage; enabled processes can advance."
+    },
+    "oxygen_shortage": {
+      "description": "Oxygen exhausted and its process disabled.",
+      "resources": {
+        "oxygen": 0
+      },
+      "processes": {
+        "oxygen_unit": {
+          "enabled": false
+        }
+      }
+    },
+    "food_shortage": {
+      "description": "Food exhausted and its process disabled.",
+      "resources": {
+        "food": 0
+      },
+      "processes": {
+        "food_unit": {
+          "enabled": false
+        }
+      }
+    },
+    "power_shortage": {
+      "description": "Energy exhausted; power process disabled.",
+      "resources": {
+        "energy": 0
+      },
+      "processes": {
+        "power_unit": {
+          "enabled": false
+        }
+      }
+    },
+    "work_stalled": {
+      "description": "Pending work has an explicit blockage.",
+      "processes": {
+        "work_unit": {
+          "blocked": true
+        }
+      }
+    },
+    "water_shortage": {
+      "description": "Water exhausted; dependent processes cannot run.",
+      "resources": {
+        "water": 0
+      }
+    },
+    "research_locked": {
+      "description": "Pending work requires synthetic research; research process disabled.",
+      "processes": {
+        "work_unit": {
+          "requires_research": 1
+        }
+      }
+    },
+    "unknown_oxygen": {
+      "description": "Oxygen observation is absent, distinct from measured zero.",
+      "resources": {
+        "oxygen": null
+      }
+    }
+  }
+}

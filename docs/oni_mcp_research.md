@@ -1,5 +1,9 @@
 # OniMcp調査報告書
 
+Phase 1追記（2026-11-01）：同じ固定コミットを継続使用しています。新しい操作別の証跡は[operation_catalog.json](../src/oni_ai/data/operation_catalog.json)に記録しました。GameControlTools/GameSpeedToolsのpause/resume/step_until経路、OrdersToolsの診断経路、ResearchToolsの内部操作を静的確認しています。すべて実機未検証・live_execution_allowed=falseです。
+
+特にBuildingControlTools.cs L87-L94には、仮想ファイル編集文脈以外の直接build_areaを拒否するガードがあります。本報告の下位build_areaハンドラのconfirm/dryRun説明は、直接tools/callで建設できるという意味ではありません。操作catalogではDIRECT_PUBLIC_ROUTE_FORBIDDENと記録しました。protocolの文書/コード不一致はUNRESOLVEDで、実行時manifestは未取得です。
+
 調査日：2026-11-01（Asia/Tokyo）。方式：GitHub接続ツールによる固定ソースの静的読解。インストール・ビルド・外部コード実行・ゲーム接続は実施していません。
 
 ## 対象と結論
