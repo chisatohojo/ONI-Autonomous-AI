@@ -7,10 +7,13 @@ from dataclasses import asdict
 from pathlib import Path
 
 from oni_ai.adapters import demo_adapter
+from oni_ai.benchmarks import BENCHMARK_VERSION, run_benchmark, sample_fixture
 from oni_ai.catalog import audit_database, import_catalog, migrate_database, read_rules
 from oni_ai.contracts import Decision, strict_json
+from oni_ai.episodes import EpisodeConfig, replay_episode, run_episode
 from oni_ai.evaluation import replay_log, run_experiment
 from oni_ai.knowledge import KnowledgeRepository, create_database
+from oni_ai.policy import SeededTestPolicy
 from oni_ai.protocol import operation_catalog
 from oni_ai.simulation import fixture_names, load_fixture
 
@@ -49,6 +52,36 @@ def main(argv: list[str] | None = None) -> int:
     simulate.add_argument("--log", type=Path, required=True)
     replay = commands.add_parser("replay", help="Verify a synthetic experiment receipt")
     replay.add_argument("log", type=Path)
+    for name in ("episode", "benchmark"):
+        command = commands.add_parser(
+            name, help="Offline autonomous episodes with a seeded test Policy"
+        )
+        command.add_argument(
+            "--split",
+            choices=["development", "evaluation"],
+            default="development" if name == "episode" else "evaluation",
+        )
+        command.add_argument("--policy-seed", type=int, default=0)
+        command.add_argument("--db", type=Path)
+        command.add_argument("--target-work", type=float)
+        for flag, default in (
+            ("max-steps", 30),
+            ("no-progress-limit", 12),
+            ("repeat-limit", 6),
+            ("error-limit", 4),
+            ("memory-limit", 16),
+        ):
+            command.add_argument(f"--{flag}", type=int, default=default)
+        if name == "episode":
+            command.add_argument("--seed", type=int, default=0)
+            command.add_argument("--log", type=Path, required=True)
+        else:
+            command.add_argument("--seeds", type=int, nargs="+", required=True)
+            command.add_argument("--output-dir", type=Path, required=True)
+    for name in ("episode-result", "episode-replay"):
+        commands.add_parser(
+            name, help="Inspect and replay a completed autonomous episode"
+        ).add_argument("log", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "init-db":
@@ -91,6 +124,47 @@ def main(argv: list[str] | None = None) -> int:
                 result = run_experiment(
                     load_fixture(args.fixture), [Decision.from_dict(item) for item in raw], args.log
                 )
+            elif args.command in {"episode", "benchmark"}:
+                config = EpisodeConfig(
+                    args.max_steps,
+                    args.no_progress_limit,
+                    args.repeat_limit,
+                    args.error_limit,
+                    args.memory_limit,
+                )
+                objective = {"work": args.target_work} if args.target_work is not None else None
+                if args.command == "episode":
+                    result = run_episode(
+                        sample_fixture(args.split, args.seed),
+                        SeededTestPolicy(args.policy_seed),
+                        args.log,
+                        config=config,
+                        objective=objective,
+                        db_path=args.db,
+                        metadata={
+                            "benchmark_version": BENCHMARK_VERSION,
+                            "split": args.split,
+                            "environment_seed": args.seed,
+                            "policy_seed": args.policy_seed,
+                        },
+                    )
+                else:
+                    result = run_benchmark(
+                        args.split,
+                        args.seeds,
+                        args.output_dir,
+                        config=config,
+                        policy_seed=args.policy_seed,
+                        db_path=args.db,
+                        objective=objective,
+                    )
+            elif args.command in {"episode-result", "episode-replay"}:
+                result = replay_episode(args.log)
+                if args.command == "episode-result":
+                    result = {
+                        key: result[key]
+                        for key in ("episode_id", "verified", "stop_reason", "attempts", "metrics")
+                    }
             else:
                 result = replay_log(args.log)
             print(json.dumps(result, ensure_ascii=False, indent=2))

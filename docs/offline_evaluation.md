@@ -1,5 +1,7 @@
 # オフライン実験・評価基盤 v1
 
+本書はPhase 1の明示行動・合成モデルの契約です。Phase 2の自律ループは[自律エピソード設計](autonomous_episodes.md)として別層に追加しました。既存run_experiment/replayと8fixtureは変更していません。
+
 実装は[simulation.py](../src/oni_ai/simulation.py)、[contracts.py](../src/oni_ai/contracts.py)、[evaluation.py](../src/oni_ai/evaluation.py)。全データはMOCK_SYNTHETIC_NOT_GAME_DATAです。ONIシミュレーション、MCPサーバー、ゲーム用実行アダプタではありません。
 
 ## fixture一覧
@@ -45,6 +47,6 @@ run_experimentは1..100件の明示的なDecisionを受け、排他的新規作�
 
 指標は資源の不足/未知、需要不足、作業・研究の差分、未完作業の停滞です。APPLIEDは入力した合成行動を受け付けた意味で、目的達成や生存を保証しません。固定の攻略順や単一の総合点は作らず、目標に応じた比較は将来のエージェントへ分離します。
 
-replayは同じfixture・行動から再計算し、記録の順序・初期状態・結果・最終状態を照合します。不完全ログや状態/fixtureの不一致を拒否します。これは自己整合性の検証であり、第三者署名や判断根拠の真実性の証明ではありません。evidence_refsは呼出側の申告として明記し、Phase 2でDBの出典へ照合します。
+replayは同じfixture・行動から再計算し、記録の順序・初期状態・結果・最終状態を照合します。不完全ログや状態/fixtureの不一致を拒否します。これは自己整合性の検証であり、第三者署名や判断根拠の真実性の証明ではありません。Phase 1のevidence_refsは呼出側の申告です。Phase 2のepisode系では検索結果のID・status・適用範囲を照合し、実ゲームDBと合成仕様を区別して不適合な根拠を拒否します。
 
 生成ログはdata/localへ置き、*.jsonlもGit対象外です。判断根拠へ秘密情報を入力しないでください。実行時のネットワーク、モデルAPI、ゲーム接続は使用しません。

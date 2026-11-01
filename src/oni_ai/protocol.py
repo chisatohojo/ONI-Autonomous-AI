@@ -2,6 +2,7 @@
 
 from importlib.resources import files
 
+from oni_ai import __version__
 from oni_ai.contracts import strict_json
 
 SUPPORTED_PROTOCOL = "2025-11-25"
@@ -30,7 +31,7 @@ def initialize_message(request_id: int | str) -> dict:
         "params": {
             "protocolVersion": SUPPORTED_PROTOCOL,
             "capabilities": {},
-            "clientInfo": {"name": "oni-ai-offline-codec", "version": "0.1.0"},
+            "clientInfo": {"name": "oni-ai-offline-codec", "version": __version__},
         },
     }
 

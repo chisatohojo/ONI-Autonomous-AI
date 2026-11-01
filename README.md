@@ -2,7 +2,7 @@
 
 Oxygen Not Included（ONI）の自律プレイAIを研究する独立プロジェクトです。ゲームルール・設備仕様・操作仕様を事前知識とし、将来の判断・計画・改善はAIが担う設計です。Klei・Valveの公式プロジェクトではありません。
 
-**Phase 1（0.1.0）：根拠付き知識DBと、合成データだけを使う模擬行動・評価環境。実ゲームへの接続・操作機能はありません。**
+**Phase 2（0.2.0）：合成環境で観測・知識検索・計画・検証・模擬実行・評価・記憶を繰り返すエージェント基盤。実ゲーム・外部LLMには接続しません。**
 
 ## セットアップ（Windows / PowerShell）
 
@@ -63,9 +63,24 @@ New-Item -ItemType Directory -Force data/local
 
 fixtureはnormal、oxygen_shortage、food_shortage、power_shortage、work_stalled、water_shortage、research_locked、unknown_oxygenの8件です。実ゲーム由来データはありません。量・レート・閾値は任意の合成値で、ONIの仕様ではありません。
 
-明示的なDecisionだけを適用し、行動や攻略順序を自動選択しません。判断根拠・前後状態・失敗要因・指標をローカルJSONLに保存し、replayで遷移の自己整合性を検証します。既存ログは上書きしません。詳細は[評価基盤設計](docs/offline_evaluation.md)を参照してください。
+上記simulateはPhase 1互換の明示的なDecision実行です。判断根拠・前後状態・失敗要因・指標をローカルJSONLに保存し、replayで遷移の自己整合性を検証します。自律実験には下記episodeを使用します。既存ログは上書きしません。詳細は[評価基盤設計](docs/offline_evaluation.md)を参照してください。
 
-`mock-demo` の出力には `MOCK_SYNTHETIC_NOT_GAME_DATA` と明記します。AI本体はProtocolで設計した段階で、モデルAPIや自動プレイヤーは実装していません。
+すべての実験データにMOCK_SYNTHETIC_NOT_GAME_DATAと明記します。初期Policyは汎用の乱数探索テスト用であり、攻略用のAIや学習済みPolicyではありません。
+
+## Phase 2の自律実験
+
+```powershell
+.\.venv\Scripts\python.exe -m oni_ai episode --split development --seed 2 --policy-seed 0 --max-steps 20 --log data/local/episode-dev.jsonl
+.\.venv\Scripts\python.exe -m oni_ai episode-result data/local/episode-dev.jsonl
+.\.venv\Scripts\python.exe -m oni_ai episode-replay data/local/episode-dev.jsonl
+.\.venv\Scripts\python.exe -m oni_ai benchmark --split evaluation --seeds 0 1 2 17 --max-steps 20 --output-dir data/local/evaluation-run
+```
+
+logと出力ディレクトリは未作成の名前を指定します。--db data/local/phase1.sqlite3を追加すると、読み取り専用のゲーム知識snapshotも検索対象にできます。初期Policyは合成モデルを検索し、実ゲームの知識を合成行動の根拠として流用しません。
+
+Policyにはfixture名・元process名・評価seedを渡しません。提案の観測digest、根拠の存在と適用範囲、UNKNOWN、資源等の前提を検証し、最大試行・進展停止・反復・例外で停止します。生存の代理指標、資源、進捗、無効試行率を別々に記録します。固定攻略順や正解行動表はありません。
+
+開発用と評価用は別の初期値範囲・seed名前空間です。評価には未知値や未見processを含めます。replayはPolicy/API/元DBなしで検索・検証・遷移・停止・評価を再計算します。詳細は[Phase 2設計](docs/autonomous_episodes.md)と[検証記録](docs/phase2_validation.md)を参照してください。
 
 ## 成果物
 
@@ -78,11 +93,13 @@ fixtureはnormal、oxygen_shortage、food_shortage、power_shortage、work_stall
 - [Phase 1変更判断](docs/phase1_decisions.md)、[知識の採否・出典](docs/phase1_sources.md)
 - [オフライン実験・評価設計](docs/offline_evaluation.md)、[Phase 1検証記録](docs/phase1_validation.md)
 - [観測・行動JSON Schema](src/oni_ai/data/experiment_schemas.json)
+- [Phase 2変更判断](docs/phase2_decisions.md)、[自律エピソード設計・LLM接続案](docs/autonomous_episodes.md)
+- [Policy用JSON Schema](src/oni_ai/data/policy_schemas.json)、[Phase 2検証記録](docs/phase2_validation.md)
 
 調査したOniMcpコミット：`14c08591cbd0bf66cd0f53b37bfb498bdef4abf6`（0.2.6）。READMEのMCP互換性説明とコードに不一致があり、固定コードでは `2025-11-25` のみサポートしています。1.0未満で変更可能性が高く、将来は実行時manifestが最終仕様です。
 
 ## 作業範囲
 
-ゲーム本体、MODフォルダ、既存セーブ、Steam設定には触れません。実ゲーム接続、無人操作、公開サーバー、.NET/Rust導入は行いません。GitHub originは既存のものを使用し、Phase 1のpushは別途承認を待ちます。秘密情報は保存せず、将来必要な設定は環境変数等へ分離します。
+ゲーム本体、MODフォルダ、既存セーブ、Steam設定には触れません。実ゲーム接続・操作、外部LLM API、有料サービス、公開サーバー、.NET/Rust導入は行いません。GitHub originは既存のものを使用します。Phase 1のd003276は承認済みでpush完了、今回のPhase 2のpushは別途承認を待ちます。秘密情報は保存せず、将来必要な設定は環境変数等へ分離します。
 
-Phase 2では合成環境上の自律判断ループを構築することを推奨します。Steam規約には自動化禁止条項があるため、MOD利用可能という事実だけから実ゲーム自律プレイの許可を推定しません。実ゲーム接続に進む前に適用条件・必要な許諾と利用者の承認を確認します。
+合成実験の結果を実ゲームの攻略性能とは扱いません。実ゲームへの接続・自律操作に進む前に適用条件・必要な許諾と利用者の承認を確認します。

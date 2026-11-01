@@ -1,5 +1,7 @@
 # Phase 1 検証記録
 
+履歴更新：Phase 1のコミットd003276はユーザー承認後、既存origin/mainへ通常のfast-forward push済みです。以下はPhase 1作業時の検証記録です。
+
 実施日：2026-11-01（Asia/Tokyo）。作業前HEAD：e1268df75d5e574f51d90c1afbe4dc54bb872d8b。既存originはhttps://github.com/chisatohojo/ONI-Autonomous-AI.git。既存の作業ディレクトリをそのまま使用し、clone/initは実施していません。
 
 ## ベースラインと最終チェック
@@ -43,4 +45,4 @@ pytestでは既存のsocket遮断を継続しています。研究用の公開�
 
 合成データは実ゲーム由来ではなく、モデル値から設備仕様を補完していません。知識は過去の公式ビルドに限定したSOURCE_REVIEWEDです。現在版への適用、過去ビルドのID実機照合、GAME_VERIFIED化、実行時manifest、OniMcpの文書差異解決、実機互換性、許諾は未確認です。
 
-最終コミット前に対象ファイルと秘密情報候補を点検し、DB・ログ・環境・調査した外部本文・wheelをGit対象外にします。ローカルコミット後の作業ツリーとoriginを確認し、pushはユーザーの個別承認を待ちます。最終コミットIDはgit logと完了報告に示します。
+対象ファイルと秘密情報候補を点検し、DB・ログ・環境・調査した外部本文・wheelをGit対象外にしました。ローカルコミットd003276で作業ツリーをcleanとし、ユーザーの個別承認後にpushを完了しました。

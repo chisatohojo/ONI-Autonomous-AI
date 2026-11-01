@@ -1,5 +1,7 @@
 # Phase 1の変更判断（実装前記録）
 
+履歴注記：本書のpush承認待ちは当時の予定です。Phase 1はd003276で承認後push完了しています。Phase 2のpush承認とは別です。
+
 日付：2026-11-01（Asia/Tokyo）。Phase 0のREADME、next_phase_plan、knowledge_db_design、oni_mcp_research、terms_review、実装と31テストを確認。ベースライン：31 passed、ruff check / format --check PASS。
 
 1. Phase 0は実行メソッドなしの読み取り専用mockだった。今回承認された模擬行動・状態更新は別のSyntheticEnvironmentに追加する。既存ReadOnlyGameAdapterとmock-demoは変更せず、実ゲーム用実行口は作らない。

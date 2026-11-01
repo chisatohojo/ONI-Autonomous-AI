@@ -1,0 +1,433 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Offline Policy proposals v1 and anonymous observations v2",
+  "$defs": {
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action_id",
+        "context_id",
+        "expected_tick",
+        "kind"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "type": "integer",
+          "default": 1
+        },
+        "action_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "context_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "expected_tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "kind": {
+          "enum": [
+            "clear_blockage",
+            "set_process",
+            "wait"
+          ]
+        },
+        "target": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": null
+        },
+        "enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": null
+        },
+        "ticks": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 1
+        },
+        "dry_run": {
+          "type": "boolean",
+          "const": false
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "wait"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "type": "null"
+              },
+              "enabled": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "required": [
+              "target"
+            ],
+            "properties": {
+              "target": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "ticks": {
+                "const": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "set_process"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "enabled"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "clear_blockage"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "enabled": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "provenance",
+        "model_version",
+        "game_version",
+        "dlc_scope",
+        "context_id",
+        "tick",
+        "units",
+        "resources",
+        "processes",
+        "alerts",
+        "observation_digest"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 2
+        },
+        "provenance": {
+          "const": "MOCK_SYNTHETIC_NOT_GAME_DATA"
+        },
+        "model_version": {
+          "const": "synthetic-resource-model/1"
+        },
+        "game_version": {
+          "const": "UNKNOWN"
+        },
+        "dlc_scope": {
+          "const": "UNKNOWN"
+        },
+        "context_id": {
+          "type": "string"
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "units": {
+          "const": "arbitrary_synthetic_units_per_tick_NOT_ONI"
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "energy",
+            "food",
+            "oxygen",
+            "research",
+            "water",
+            "work"
+          ],
+          "properties": {
+            "energy": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "food": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "oxygen": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "research": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "water": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "work": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            }
+          }
+        },
+        "processes": {
+          "type": "object",
+          "maxProperties": 20,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "enabled",
+              "blocked",
+              "requires_research",
+              "inputs",
+              "outputs"
+            ],
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "requires_research": {
+                "type": "number",
+                "minimum": 0
+              },
+              "inputs": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "energy": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "food": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "oxygen": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "research": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "water": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "work": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              },
+              "outputs": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "energy": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "food": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "oxygen": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "research": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "water": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "work": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observation_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "rationale"
+      ],
+      "properties": {
+        "action": {
+          "$ref": "#/$defs/action"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "evidence_refs": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "minItems": 1
+        },
+        "unknowns": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          }
+        }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "observation_digest",
+        "decision"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "observation_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "decision": {
+          "$ref": "#/$defs/decision"
+        }
+      }
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "query"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "model",
+            "building",
+            "rule"
+          ]
+        },
+        "query": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "game_version": {
+          "type": "string",
+          "default": "UNKNOWN"
+        },
+        "dlc_scope": {
+          "type": "string",
+          "default": "UNKNOWN"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32,
+          "default": 32
+        }
+      }
+    }
+  }
+}
