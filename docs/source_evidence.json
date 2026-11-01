@@ -1,0 +1,271 @@
+{
+  "repository": "https://github.com/LIghtJUNction/OniMods",
+  "commit": "14c08591cbd0bf66cd0f53b37bfb498bdef4abf6",
+  "accessed_on": "2026-11-01",
+  "files": [
+    {
+      "path": "mods/OniMcp/README_EN.md",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/README_EN.md",
+      "git_blob_sha": "a2eb218c5f3f31d3c5ea81f18fb6983dbda1e7d7",
+      "content_sha256": "867b33588a1ad7cd3c9e0c18c51b9ad125fc2ef6f528817858c47ba75e609e9b",
+      "lines": 100,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "docs/mcp-tools-reference.md",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/docs/mcp-tools-reference.md",
+      "git_blob_sha": "f6ed8d6df1895a82f8428ab29ebbac6256322623",
+      "content_sha256": "b7fbbec17b7de9a80a69a2cb3e85edf175aaaa75e05aeb9953e3afaf965861d7",
+      "lines": 239,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "docs/api-developer-guide.md",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/docs/api-developer-guide.md",
+      "git_blob_sha": "04972ff4a0d077217c18b02c94d49167ebd89b0e",
+      "content_sha256": "48177f7ab68afeb6d1106c4e31156982f592f14aa525de5c8309945d5a5337ca",
+      "lines": 362,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/LICENSE",
+      "git_blob_sha": "e1cab48fba94ffd09bdf51da5130283dbf1872ce",
+      "content_sha256": "e373e4ccead298f5c71fe83407c78a079a56ce0d9bcce651559a0e24024aeb2a",
+      "lines": 295,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "LICENSING.md",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/LICENSING.md",
+      "git_blob_sha": "e5d2a79fe1bc508e1a39304bd5613843d7b5e9a8",
+      "content_sha256": "c4a5ee5f9091ec342144100bd8e2c3997a57e706a480d38128a8cbafcfcbaafe",
+      "lines": 12,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/OniMcp.csproj",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/OniMcp.csproj",
+      "git_blob_sha": "106eb43fd89db8b1c082889a7b74d27e998f66a9",
+      "content_sha256": "51e22083dd57b9a4600cb7deef24e58156bd9ea193ef7e9c456d1c7edf8688d3",
+      "lines": 201,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/ModInfo.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/ModInfo.cs",
+      "git_blob_sha": "5bc269d6be66e96cc31b4b6f555998cbd166d363",
+      "content_sha256": "85708ae4cee875755173a22e20ce4e0c0901e7b96be9702030e792d7bb9d96b7",
+      "lines": 65,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Config/OniMcpOptions.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Config/OniMcpOptions.cs",
+      "git_blob_sha": "26fff41adc9b527af23f8f59e205d7209202d968",
+      "content_sha256": "ad72eb218d94e9710ffa87bc4fc3c6c5e311d6e0c4cf743b72b35b410bfe46ed",
+      "lines": 431,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Server/McpHttpServerPostTransport.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Server/McpHttpServerPostTransport.cs",
+      "git_blob_sha": "29d7205573963cfb006b01fa66aafcde1f3af125",
+      "content_sha256": "2392f8d4cc64027ba381fabcf2310c6e07a33e1d27c647547cd5f8d3a35fcaeb",
+      "lines": 386,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Server/McpHttpServerProtocolTasks.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Server/McpHttpServerProtocolTasks.cs",
+      "git_blob_sha": "21b17e854f6945d0baad238d633ab982aea275c6",
+      "content_sha256": "ee6c6ebd3cd21bad875796362b8742b0996bbba87e39ccd171fab94602bc66cd",
+      "lines": 391,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Server/McpHttpServerValidation.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Server/McpHttpServerValidation.cs",
+      "git_blob_sha": "e96341cbb0d5b465b4a66124ac3bcd0e3a63c660",
+      "content_sha256": "14c4cb934cfbad51bb24af960ce656c6a154a0d72c281219fe21958e900fc2de",
+      "lines": 310,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Server/McpHttpServer.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Server/McpHttpServer.cs",
+      "git_blob_sha": "07f910e2c7f7000e239a7647744e5c537c9c88ac",
+      "content_sha256": "9e9d84a627b2b1b3e0211036fd46803cc335df6e7095dc349dfdb15e9bc42750",
+      "lines": 353,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Server/MainThreadBridge.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Server/MainThreadBridge.cs",
+      "git_blob_sha": "d678bc699ffc7ca2c3045edf42a82bc7800e04a1",
+      "content_sha256": "625a66709bcfd451af9a8ce05f81ea0c5c44d4b9378a8cba481b9c083b6dd22d",
+      "lines": 170,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Core/OniToolRegistry.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Core/OniToolRegistry.cs",
+      "git_blob_sha": "ffdba34bc71db635678d56ec00cc2df4836e0f29",
+      "content_sha256": "fa69e32398cd3ccf1850aa6ab315cbe38194fa43dd7dc7389d9ba5f3245ab362",
+      "lines": 416,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Core/ToolCallMiddleware.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Core/ToolCallMiddleware.cs",
+      "git_blob_sha": "d6b5ffb9b3c129819bc6b268a16a00a5e7be68ba",
+      "content_sha256": "69a0146b97c9e82763ca01078a1fb59a87864646c283c7cf53fdaf76b2eb604e",
+      "lines": 121,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Core/OniResourceRegistryBuildingAndSpaceRoutes.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Core/OniResourceRegistryBuildingAndSpaceRoutes.cs",
+      "git_blob_sha": "470ad1bebeb473fbb6c1fc322518295a3a7daf7c",
+      "content_sha256": "1aeb3282440f743e3b95f120792148b314df0ee08ae95f419d3c8805942d63ca",
+      "lines": 417,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Shared/ToolUtil.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Shared/ToolUtil.cs",
+      "git_blob_sha": "2387334a8dde7c01ada51031deef72a393c5570f",
+      "content_sha256": "20918379ce195e15477f82653437c17a71656ae695b366daf8bb1428754deb53",
+      "lines": 312,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Shared/PreviewTokenRegistry.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Shared/PreviewTokenRegistry.cs",
+      "git_blob_sha": "6e62228205ddcc3154ebbf66e40f7bfbf7dbbbe4",
+      "content_sha256": "d69356c190df6ccfdc8819e7fd2c5b5f48ea2e92b3ffd2a7f16b01c1a96a05f4",
+      "lines": 71,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Build/BuildPlanningCatalog.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Build/BuildPlanningCatalog.cs",
+      "git_blob_sha": "a2f06ccb95abe016f2368a0f079ad27d8a648f89",
+      "content_sha256": "12c69e30a05bbe02fba350e152a7f1494a376c43f1597fa8cf261298648158a1",
+      "lines": 235,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Build/BuildPlanningActionBuildArea.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Build/BuildPlanningActionBuildArea.cs",
+      "git_blob_sha": "b5a1dc96eafeb4a37a27565d851db5fc9428b7ef",
+      "content_sha256": "e88145b2b2e38c9926277da055f9053e5100697fab9eb038448ae08827f5ade0",
+      "lines": 260,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Build/BuildPlanTextAliases.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Build/BuildPlanTextAliases.cs",
+      "git_blob_sha": "e8a4f3f2f0b74660cb300bfb0f8e9307c2f4d322",
+      "content_sha256": "8fc08162a2c4356611ebc3f205724ff3ebf319becbad796e2bfabfe544772d00",
+      "lines": 179,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/THIRD_PARTY_NOTICES.txt",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/THIRD_PARTY_NOTICES.txt",
+      "git_blob_sha": "398eb11431445c3a1a4776c9f220b49169a54125",
+      "content_sha256": "e715b10ab86b2d5066ed9764c443c3d9e44b01e1d48858511ce907a2e88ee558",
+      "lines": 89,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "Directory.Build.props.example",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/Directory.Build.props.example",
+      "git_blob_sha": "f8f1816773c1549882145c1db8cb8f039e416d58",
+      "content_sha256": "cb28c693c29ba1347727bfa4a5ac5ea4d5735eed942576ee40c4a6a46e3a48da",
+      "lines": 24,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "Cargo.toml",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/Cargo.toml",
+      "git_blob_sha": "f7e8e79d3e58f0048ed7efb76dc6a9ce415bd6a6",
+      "content_sha256": "f329e9caec0ec9d6351ae2ca7d73d6a424da72ee6a9598fa7ace8a953ef2442e",
+      "lines": 33,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "tests/OniMcp.Server.Tests/RetiredProtocolRegression.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/tests/OniMcp.Server.Tests/RetiredProtocolRegression.cs",
+      "git_blob_sha": "cb6e9401d965f53a01fa5a2c502753fc54bc7e80",
+      "content_sha256": "7c3219966e03615d8b577f829ed822fcf12fefeaa35f35491edac7bcf54cb355",
+      "lines": 408,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "tests/OniMcp.ModernProtocol.Tests/OniMcp.ModernProtocol.Tests.csproj",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/tests/OniMcp.ModernProtocol.Tests/OniMcp.ModernProtocol.Tests.csproj",
+      "git_blob_sha": "e4a4b94d8cf05dffb6f67e184488f3e7712ad3c3",
+      "content_sha256": "5f7194bf8bf624cb076186a3214aefcf3dca782edafcc288470653832698cb7a",
+      "lines": 20,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "tests/OniMcp.ModernHeaders.Tests/OniMcp.ModernHeaders.Tests.csproj",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/tests/OniMcp.ModernHeaders.Tests/OniMcp.ModernHeaders.Tests.csproj",
+      "git_blob_sha": "00d35ce3ea2d558f29ccef851a6771085a6115bf",
+      "content_sha256": "d76f2551fe344919cd471ae24ba217b6f81b384fbac0e4e52c19a375de2dd89c",
+      "lines": 20,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/CHANGELOG.md",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/CHANGELOG.md",
+      "git_blob_sha": "0bddeee3754b262564f176ddc07b844f6a30cdac",
+      "content_sha256": "6e722a091b52804cf2e354cdd47e70f935a69ca59215df020435d8feb1daa66a",
+      "lines": 179,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Core/OniResourceRegistry.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Core/OniResourceRegistry.cs",
+      "git_blob_sha": "7133559ac84aaa18750c20ca8a91edd758ed342e",
+      "content_sha256": "70161bfd7df72fb01a44dbfb5990fc3673a823f069e689fd326951ca28e79f91",
+      "lines": 466,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/WorldEditor/WorldEditorBatchSafety.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/WorldEditor/WorldEditorBatchSafety.cs",
+      "git_blob_sha": "22e749d98192e5db7d8916a680305875e2e35768",
+      "content_sha256": "59934cf88dd606664ffbf01f21ab1cc51673aa23829b489cf98f8ef2de3cfdb3",
+      "lines": 225,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Impl/Build/BuildPlanningTools.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Build/BuildPlanningTools.cs",
+      "git_blob_sha": "45c899d067fb43484c24f7a153c7930a7e7131bf",
+      "content_sha256": "5075a7e919d4e09f1977a0b2651afd6cd3a349d28596c071c81777f6957e4b56",
+      "lines": 291,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "mods/OniMcp/Tools/Entry/BuildingControlTools.cs",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Entry/BuildingControlTools.cs",
+      "git_blob_sha": "3cd393be97e4e7885305dfe80b0c52a8a31e8d87",
+      "content_sha256": "59ba7df791061d99913269260af7e0edc7ade7643f0976933908fc703ce21c40",
+      "lines": 308,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    },
+    {
+      "path": "LICENSE.MIT",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/LICENSE.MIT",
+      "git_blob_sha": "eaae8598f1d4bb30495e834898f8c5aa2164d1b0",
+      "content_sha256": "6c124fdfa05cd22cac752bf10045bf111cf5c14a2b6021e9944df9284d250396",
+      "lines": 22,
+      "hash_scope": "UTF-8 text returned by GitHub connector, LF; not raw Git object"
+    }
+  ]
+}

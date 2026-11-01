@@ -1,0 +1,80 @@
+{
+  "seed_version": 1,
+  "notice": "Only interface identity and labels are sourced. All game statistics remain UNKNOWN.",
+  "sources": [
+    {
+      "source_id": "aliases",
+      "kind": "UPSTREAM_CODE",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/mods/OniMcp/Tools/Impl/Build/BuildPlanTextAliases.cs",
+      "revision": "14c08591cbd0bf66cd0f53b37bfb498bdef4abf6",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "8fc08162a2c4356611ebc3f205724ff3ebf319becbad796e2bfabfe544772d00",
+      "note": "Interface vocabulary only; not a verified game building definition."
+    },
+    {
+      "source_id": "api_guide",
+      "kind": "UPSTREAM_DOC",
+      "url": "https://github.com/LIghtJUNction/OniMods/blob/14c08591cbd0bf66cd0f53b37bfb498bdef4abf6/docs/api-developer-guide.md",
+      "revision": "14c08591cbd0bf66cd0f53b37bfb498bdef4abf6",
+      "accessed_on": "2026-11-01",
+      "content_sha256": "48177f7ab68afeb6d1106c4e31156982f592f14aa525de5c8309945d5a5337ca",
+      "note": "Interface vocabulary only; not a verified game building definition."
+    }
+  ],
+  "buildings": [
+    {
+      "variant_id": "Tile@UNKNOWN@UNKNOWN",
+      "building_id": "Tile",
+      "game_version": "UNKNOWN",
+      "dlc_scope": "UNKNOWN",
+      "identity_status": "SOURCE_REVIEWED",
+      "identity_source_id": "aliases",
+      "identity_locator": "PlanBuildingAliases(): English tile key mapped to Tile",
+      "facts": {
+        "name": {
+          "value": "tile",
+          "status": "SOURCE_REVIEWED",
+          "source_id": "aliases",
+          "locator": "PlanBuildingAliases(): English tile key mapped to Tile",
+          "note": "Label in upstream source; not an official localized game name."
+        }
+      }
+    },
+    {
+      "variant_id": "PlanterBox@UNKNOWN@UNKNOWN",
+      "building_id": "PlanterBox",
+      "game_version": "UNKNOWN",
+      "dlc_scope": "UNKNOWN",
+      "identity_status": "SOURCE_REVIEWED",
+      "identity_source_id": "aliases",
+      "identity_locator": "PlanBuildingAliases(): English planter box key mapped to PlanterBox",
+      "facts": {
+        "name": {
+          "value": "planter box",
+          "status": "SOURCE_REVIEWED",
+          "source_id": "aliases",
+          "locator": "PlanBuildingAliases(): English planter box key mapped to PlanterBox",
+          "note": "Label in upstream source; not an official localized game name."
+        }
+      }
+    },
+    {
+      "variant_id": "ManualGenerator@UNKNOWN@UNKNOWN",
+      "building_id": "ManualGenerator",
+      "game_version": "UNKNOWN",
+      "dlc_scope": "UNKNOWN",
+      "identity_status": "SOURCE_REVIEWED",
+      "identity_source_id": "api_guide",
+      "identity_locator": "Preview blueprint example: task text Manual Generator and prefabId ManualGenerator",
+      "facts": {
+        "name": {
+          "value": "Manual Generator",
+          "status": "SOURCE_REVIEWED",
+          "source_id": "api_guide",
+          "locator": "Preview blueprint example: task text Manual Generator and prefabId ManualGenerator",
+          "note": "Label in upstream source; not an official localized game name."
+        }
+      }
+    }
+  ]
+}
