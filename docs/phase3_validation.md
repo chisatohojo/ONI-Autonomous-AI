@@ -1,5 +1,7 @@
 # Phase 3 検証記録
 
+履歴補足：d0e3d5b3b5dfd028dbd31f2670613db10caa0236はユーザー承認後にpush済みです。以下は当時の検証記録として保持します。
+
 2026-11-02（Asia/Tokyo）。開始HEAD：27fb339b9d9508630e3216debe4f3f02650f18fe。開始時clean、mainのupstreamはorigin/main、既存originを継続使用しています。Phase 2は承認後push済みです。今回pushは実施せず、ローカルコミット後に承認を求めます。
 
 ## 検証結果

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-11-02",
+  "timezone": "Asia/Tokyo",
+  "currency": "USD",
+  "scope": "ESTIMATE_ONLY_NOT_SPENDING_APPROVAL",
+  "formula": "N * (input_tokens * input_usd_per_million + billed_output_tokens * output_usd_per_million) / 1000000",
+  "assumptions": {
+    "requests_per_decision": 1,
+    "billed_output_includes_reasoning": true,
+    "caching": "NONE",
+    "service_tier": "standard",
+    "region": "default",
+    "excluded": [
+      "retries",
+      "tax",
+      "foreign_exchange",
+      "tools",
+      "media",
+      "storage",
+      "regional_uplifts"
+    ],
+    "account_access_and_rate_limits": "UNKNOWN"
+  },
+  "scenarios": {
+    "S": {
+      "input_tokens": 2000,
+      "billed_output_tokens": 500
+    },
+    "M": {
+      "input_tokens": 8000,
+      "billed_output_tokens": 1500
+    },
+    "L": {
+      "input_tokens": 16000,
+      "billed_output_tokens": 3000
+    }
+  },
+  "models": [
+    {
+      "model_id": "gpt-6-luna",
+      "input_usd_per_million": "0.10",
+      "output_usd_per_million": "0.50",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "source_checked_on": "2026-11-02",
+      "estimates": {
+        "S": {
+          "per_decision_usd": "0.00045",
+          "totals_usd": {
+            "100": "0.04500",
+            "1000": "0.45000",
+            "10000": "4.50000"
+          }
+        },
+        "M": {
+          "per_decision_usd": "0.00155",
+          "totals_usd": {
+            "100": "0.15500",
+            "1000": "1.55000",
+            "10000": "15.50000"
+          }
+        },
+        "L": {
+          "per_decision_usd": "0.0031",
+          "totals_usd": {
+            "100": "0.3100",
+            "1000": "3.1000",
+            "10000": "31.0000"
+          }
+        }
+      }
+    },
+    {
+      "model_id": "gpt-6.1-sol",
+      "input_usd_per_million": "2.00",
+      "output_usd_per_million": "10.00",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "source_checked_on": "2026-11-02",
+      "estimates": {
+        "S": {
+          "per_decision_usd": "0.009",
+          "totals_usd": {
+            "100": "0.900",
+            "1000": "9.000",
+            "10000": "90.000"
+          }
+        },
+        "M": {
+          "per_decision_usd": "0.031",
+          "totals_usd": {
+            "100": "3.100",
+            "1000": "31.000",
+            "10000": "310.000"
+          }
+        },
+        "L": {
+          "per_decision_usd": "0.062",
+          "totals_usd": {
+            "100": "6.200",
+            "1000": "62.000",
+            "10000": "620.000"
+          }
+        }
+      }
+    },
+    {
+      "model_id": "gpt-6-astra",
+      "input_usd_per_million": "10.00",
+      "output_usd_per_million": "50.00",
+      "source_url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "source_checked_on": "2026-11-02",
+      "estimates": {
+        "S": {
+          "per_decision_usd": "0.045",
+          "totals_usd": {
+            "100": "4.500",
+            "1000": "45.000",
+            "10000": "450.000"
+          }
+        },
+        "M": {
+          "per_decision_usd": "0.155",
+          "totals_usd": {
+            "100": "15.500",
+            "1000": "155.000",
+            "10000": "1550.000"
+          }
+        },
+        "L": {
+          "per_decision_usd": "0.31",
+          "totals_usd": {
+            "100": "31.00",
+            "1000": "310.00",
+            "10000": "3100.00"
+          }
+        }
+      }
+    },
+    {
+      "model_id": "claude-sonnet-5-5",
+      "input_usd_per_million": "2.00",
+      "output_usd_per_million": "10.00",
+      "source_url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+      "source_checked_on": "2026-11-02",
+      "estimates": {
+        "S": {
+          "per_decision_usd": "0.009",
+          "totals_usd": {
+            "100": "0.900",
+            "1000": "9.000",
+            "10000": "90.000"
+          }
+        },
+        "M": {
+          "per_decision_usd": "0.031",
+          "totals_usd": {
+            "100": "3.100",
+            "1000": "31.000",
+            "10000": "310.000"
+          }
+        },
+        "L": {
+          "per_decision_usd": "0.062",
+          "totals_usd": {
+            "100": "6.200",
+            "1000": "62.000",
+            "10000": "620.000"
+          }
+        }
+      }
+    },
+    {
+      "model_id": "gemini-3.8-flash",
+      "input_usd_per_million": "0.75",
+      "output_usd_per_million": "3.75",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "source_checked_on": "2026-11-02",
+      "estimates": {
+        "S": {
+          "per_decision_usd": "0.003375",
+          "totals_usd": {
+            "100": "0.337500",
+            "1000": "3.375000",
+            "10000": "33.750000"
+          }
+        },
+        "M": {
+          "per_decision_usd": "0.011625",
+          "totals_usd": {
+            "100": "1.162500",
+            "1000": "11.625000",
+            "10000": "116.250000"
+          }
+        },
+        "L": {
+          "per_decision_usd": "0.02325",
+          "totals_usd": {
+            "100": "2.32500",
+            "1000": "23.25000",
+            "10000": "232.50000"
+          }
+        }
+      },
+      "price_period": {
+        "through": "2026-12-31",
+        "from_2027_01_01_input_usd_per_million": "1.50",
+        "from_2027_01_01_output_usd_per_million": "7.50"
+      }
+    }
+  ]
+}

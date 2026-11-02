@@ -1,6 +1,6 @@
 # アダプタ・AI設計と次Phase計画
 
-**現状：Phase 3のPolicy比較・検証境界を実装済み。以下の過去計画は履歴として保持し、末尾のPhase 4引継ぎを現在の推奨設計とします。**
+**現状：Phase 4AのPC/モデル/費用調査と設計を完了。実装はPhase 3の0.3.0を維持しています。以下の過去計画は履歴として保持し、末尾のPhase 4B具体計画を現在の推奨案とします。**
 
 Phase 0時点では実ゲームへ接続せず、AIモデルも呼び出しません。将来のONI観測層とAI判断層の境界を、Python Protocolと不変のデータクラスで定義します。
 
@@ -120,3 +120,11 @@ Phase 3は引き続きオフラインで、Policyの質と実行境界を評価�
 次は実モデルを選ぶ前に、トークン/料金/時間の計測・予約、異常出力・再試行・切断・認証情報除去のmock契約を拡充します。今回のStructuredModel/BudgetedModelAdapterはmock検証済みですが、SDK/HTTP接続・モデル導入・課金は未実装です。実利用には提供元・配布物ライセンス・データ送信範囲・費用の明示的決定が必要です。
 
 比較条件とpromptを開発集合で決め、新しい保留seedを固定してからモデルごとの比較を行います。Phase 3の保留結果によるPolicy調整は行っておらず、公開後はその集合も回帰用です。目標達成だけで総合改善とせず、需要充足・UNKNOWN・資源消費・無効率・費用・時間を分けて評価します。実ゲーム接続・操作は引き続き範囲外です。
+
+## Phase 4A完了後・Phase 4B具体計画
+
+[PC環境](phase4a_pc_environment.md)、[ローカル候補](phase4a_local_models.md)、[クラウド/費用](phase4a_cloud_models.md)、[具体計画](phase4b_implementation_plan.md)、[検証記録](phase4a_validation.md)を参照してください。Phase 3のd0e3d5bは承認後push済みです。
+
+RTX4060/8GB・RAM16GiBでは、小型量子化モデルを短contextで評価するAを最初に推奨し、別途承認があればcloud参照を追加してCへ段階的に進みます。速度・精度・ピークメモリはUNKNOWNです。既存socket遮断を残したbroker、正しいtoken計数、usage/予約台帳、鍵を継承しないworker環境、schema subsetの検査を先に実装します。v1のPolicy/seed定数を書き換えず、新しい比較v2と未使用の保留条件を用意します。
+
+今回は資料のみを追加し、モデル・runtime・APIキーを取得していません。Phase 4Bの導入/接続/費用は今回の見積もりから許可されたとは扱いません。実ゲームへの接続は次Phaseでも行いません。

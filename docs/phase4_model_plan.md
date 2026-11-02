@@ -1,5 +1,7 @@
 # Phase 4：LLM Policy接続計画（今回は設計とmockのみ）
 
+Phase 4A補足（2026-11-02）：本書はPhase 3で定めたmock契約の履歴です。現在の候補・PC適合性・費用は[Phase 4A調査](phase4a_pc_environment.md)と[モデル比較](phase4a_cloud_models.md)、具体的な次Phase案は[Phase 4B計画](phase4b_implementation_plan.md)を参照してください。実接続・導入は未実施です。
+
 Phase 3ではモデルをダウンロードせず、モデルサービス・実ゲームへ接続せず、API課金も行いません。[model_adapter.py](../src/oni_ai/model_adapter.py)は注入されたoffline mockでだけ検証しています。
 
 ## アダプタと予算
