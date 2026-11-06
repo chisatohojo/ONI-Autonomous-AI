@@ -4,7 +4,7 @@ Oxygen Not Included（ONI）の自律プレイAIを研究する独立プロジ�
 
 **Phase 3（0.3.0）：複数Policyを同条件で比較し、構造化主張・プロセス期限・開発/評価分離を検証する合成研究環境。実ゲーム・外部LLMには接続しません。**
 
-**Phase 4A：PC調査・モデル/費用比較・Phase 4B設計を追加。実装版は0.3.0のままです。モデル取得、追加ソフトの導入、API利用、PC設定変更は行っていません。**
+**Phase 4B1（0.4.0b1）：socket遮断を維持する推論IPC、mock専用ローカルモデルadapter、予約予算・usage照合、比較plan/report v2を追加しました。実モデル・runtimeの導入、LLM通信、課金は行っていません。**
 
 ## セットアップ（Windows / PowerShell）
 
@@ -110,6 +110,23 @@ Policyは専用プロセスで動き、期限超過時は終了と一時ファ�
 
 費用例は8,000入力＋1,500課金出力tokens/判断で1,000判断ならSol $31、Luna $1.55。思考tokenを含む仮定で、retry・税等は別です。これは見積もりで、利用承認ではありません。Phase 4Bでは既存workerのsocket遮断を維持するbroker、正確なtoken計数、新しいplan/report版と保留条件を先に用意します。
 
+## Phase 4B1のmock推論接続
+
+```powershell
+.\.venv\Scripts\python.exe -m oni_ai model-compare-prepare data/local/my-model-study --db data/local/phase1.sqlite3 --max-steps 5
+.\.venv\Scripts\python.exe -m oni_ai model-compare data/local/my-model-study/plan.json --group mock-development
+.\.venv\Scripts\python.exe -m oni_ai model-compare-freeze data/local/my-model-study/plan.json
+.\.venv\Scripts\python.exe -m oni_ai model-compare data/local/my-model-study/plan.json --group mock-validation
+.\.venv\Scripts\python.exe -m oni_ai model-compare-verify data/local/my-model-study/mock-validation/report.json
+.\.venv\Scripts\python.exe -m oni_ai model-episode-replay data/local/my-model-study/mock-validation/5003-0-model-mock.jsonl data/local/my-model-study/mock-validation/5003-0-model-mock.audit.json
+```
+
+出力先は未作成の名前を使い、--dbは必要なら省略します。3 Policy×2環境seed×2 Policy seedを各groupで実行します。model-mockは探索Policyを返すtest doubleで、LLMの判断性能を測るものではありません。mock-validationも配線検証用で、Phase 4B2の新しい保留評価ではありません。
+
+専用Policy/brokerプロセスは両方socket遮断・環境変数allowlistで起動します。IPCは検索・提案とcount/generateだけで、任意URL・コマンドを渡す口はありません。モデル・tokenizer・templateを固定した正確な計数がなければ生成前に停止します。現在の正確な計数は人工mockのUTF8 byte仕様だけで、実モデルは未対応です。入力＋最大出力を毎回予約し、失敗・usage不明を返金しません。期限超過・異常終了時はプロセス停止と一時領域削除を確認します。
+
+旧researchログに推論監査sidecarを関連付け、JSON/CSV/Markdownと予約台帳を検証します。旧CLI・比較v1の形式は維持しています。自然言語の意味やOS全体の隔離を保証する仕組みではありません。詳細は[推論設計](docs/phase4b1_inference.md)、[検証記録](docs/phase4b1_validation.md)、[B2引継ぎ](docs/phase4b2_handoff.md)を参照してください。
+
 ## 成果物
 
 - [OniMcp調査報告書](docs/oni_mcp_research.md)：固定コミット、API、プロトコル、依存、制限、ライセンス
@@ -129,11 +146,13 @@ Policyは専用プロセスで動き、期限超過時は終了と一時ファ�
 - [Phase 4A PC環境報告](docs/phase4a_pc_environment.md)、[ローカルLLM候補](docs/phase4a_local_models.md)
 - [クラウド候補・費用表](docs/phase4a_cloud_models.md)、[費用の前提・結果JSON](docs/phase4a_cost_estimates.json)
 - [推奨構成・Phase 4B具体計画](docs/phase4b_implementation_plan.md)、[Phase 4A検証記録](docs/phase4a_validation.md)
+- [Phase 4B1変更判断](docs/phase4b1_decisions.md)、[推論IPC・比較v2設計](docs/phase4b1_inference.md)
+- [Phase 4B1検証記録](docs/phase4b1_validation.md)、[Phase 4B2導入・評価手順](docs/phase4b2_handoff.md)
 
 調査したOniMcpコミット：`14c08591cbd0bf66cd0f53b37bfb498bdef4abf6`（0.2.6）。READMEのMCP互換性説明とコードに不一致があり、固定コードでは `2025-11-25` のみサポートしています。1.0未満で変更可能性が高く、将来は実行時manifestが最終仕様です。
 
 ## 作業範囲
 
-ゲーム本体、MODフォルダ、既存セーブ、Steam設定には触れません。実ゲーム接続・操作、外部LLM API、有料サービス、公開サーバー、.NET/Rust導入は行いません。GitHub originは既存のものを使用します。Phase 1のd003276、Phase 2の27fb339、Phase 3のd0e3d5bは承認後push完了、今回のPhase 4Aのpushは別途承認を待ちます。秘密情報は保存せず、将来必要な設定は環境変数等へ分離します。
+ゲーム本体、MODフォルダ、既存セーブ、Steam設定には触れません。実ゲーム接続・操作、外部LLM API、有料サービス、公開サーバー、.NET/Rust導入は行いません。GitHub originは既存のものを使用します。Phase 1のd003276、Phase 2の27fb339、Phase 3のd0e3d5b、Phase 4Aの8a96055は承認後push完了済みです。Phase 4B1のpushは別途承認を待ちます。秘密情報は保存せず、将来必要な設定は環境変数等へ分離します。
 
 合成実験の結果を実ゲームの攻略性能とは扱いません。実ゲームへの接続・自律操作に進む前に適用条件・必要な許諾と利用者の承認を確認します。

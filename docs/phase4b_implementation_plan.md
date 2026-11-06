@@ -1,5 +1,7 @@
 # Phase 4B：接続・最小実験の具体案
 
+2026-11-06追記：以下はPhase 4A時点の設計です。Phase 4B1でoffline mock部分を[実装](phase4b1_inference.md)・[検証](phase4b1_validation.md)しました。実通信・モデル導入・実tokenizer対応は未実施で、次の具体的な入口は[Phase 4B2引継ぎ](phase4b2_handoff.md)です。
+
 策定日：2026-11-02（Asia/Tokyo）。本書は**次Phaseの設計**です。モデル取得、runtime導入、キー設定、API課金、ローカルモデルサービス起動を今回許可・実施するものではありません。Phase 4Aではソースコードと依存を変更していません。
 
 ## 推奨構成とA/B/C比較

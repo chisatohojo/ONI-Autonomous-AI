@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ONI_Autonomous_AI"
-version = "0.3.0"
-description = "Paired offline Policy research with bounded processes and structured evidence"
+version = "0.4.0b1"
+description = "Offline mock inference broker with bounded IPC and model comparison v2"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = []

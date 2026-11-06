@@ -19,6 +19,13 @@ from oni_ai.contracts import Decision, strict_json
 from oni_ai.episodes import EpisodeConfig, replay_episode, run_episode
 from oni_ai.evaluation import replay_log, run_experiment
 from oni_ai.knowledge import KnowledgeRepository, create_database
+from oni_ai.model_comparison import (
+    freeze_model_comparison,
+    prepare_model_comparison,
+    run_model_comparison,
+    verify_model_comparison,
+    verify_model_episode,
+)
 from oni_ai.policy import SeededTestPolicy
 from oni_ai.protocol import operation_catalog
 from oni_ai.research import replay_research
@@ -101,6 +108,20 @@ def main(argv: list[str] | None = None) -> int:
             )
     commands.add_parser("comparison-verify").add_argument("report", type=Path)
     commands.add_parser("research-replay").add_argument("log", type=Path)
+    model_prepare = commands.add_parser("model-compare-prepare", help="Create offline mock plan v2")
+    model_prepare.add_argument("output_dir", type=Path)
+    model_prepare.add_argument("--db", type=Path)
+    model_prepare.add_argument("--max-steps", type=int, default=5)
+    model_run = commands.add_parser("model-compare", help="Run mock IPC comparison only")
+    model_run.add_argument("plan", type=Path)
+    model_run.add_argument(
+        "--group", choices=["mock-development", "mock-validation"], required=True
+    )
+    commands.add_parser("model-compare-freeze").add_argument("plan", type=Path)
+    commands.add_parser("model-compare-verify").add_argument("report", type=Path)
+    model_replay = commands.add_parser("model-episode-replay")
+    model_replay.add_argument("receipt", type=Path)
+    model_replay.add_argument("audit", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "init-db":
@@ -118,7 +139,19 @@ def main(argv: list[str] | None = None) -> int:
             observation = demo_adapter().read_resource("oni://colony/status")
             print(json.dumps(asdict(observation), ensure_ascii=False, indent=2))
         else:
-            if args.command == "comparison-prepare":
+            if args.command == "model-compare-prepare":
+                result = prepare_model_comparison(
+                    args.output_dir, args.db, max_steps=args.max_steps
+                )
+            elif args.command == "model-compare":
+                result = run_model_comparison(args.plan, args.group)
+            elif args.command == "model-compare-freeze":
+                result = freeze_model_comparison(args.plan)
+            elif args.command == "model-compare-verify":
+                result = verify_model_comparison(args.report)
+            elif args.command == "model-episode-replay":
+                result = verify_model_episode(args.receipt, args.audit)
+            elif args.command == "comparison-prepare":
                 result = prepare_comparison(args.output_dir, args.db)
             elif args.command == "comparison-freeze":
                 result = freeze_comparison(args.plan)

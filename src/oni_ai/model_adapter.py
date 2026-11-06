@@ -117,7 +117,9 @@ class BudgetedModelAdapter:
                 reply = self.model.complete(
                     payload, max_output_tokens=self.limits.output_tokens, timeout_seconds=remaining
                 )
-            except Exception:
+            except Exception as error:
+                if getattr(error, "retryable", True) is False:
+                    raise
                 previous_error = "MODEL_TRANSPORT_ERROR"
                 continue
             if time.monotonic() > deadline:

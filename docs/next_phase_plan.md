@@ -1,6 +1,6 @@
 # アダプタ・AI設計と次Phase計画
 
-**現状：Phase 4AのPC/モデル/費用調査と設計を完了。実装はPhase 3の0.3.0を維持しています。以下の過去計画は履歴として保持し、末尾のPhase 4B具体計画を現在の推奨案とします。**
+**現状：Phase 4B1（0.4.0b1）のoffline mock推論IPC・比較v2を追加。以下の過去計画は履歴として保持し、末尾のPhase 4B2引継ぎを現在の推奨案とします。実モデル接続は未実装です。**
 
 Phase 0時点では実ゲームへ接続せず、AIモデルも呼び出しません。将来のONI観測層とAI判断層の境界を、Python Protocolと不変のデータクラスで定義します。
 
@@ -128,3 +128,9 @@ Phase 3は引き続きオフラインで、Policyの質と実行境界を評価�
 RTX4060/8GB・RAM16GiBでは、小型量子化モデルを短contextで評価するAを最初に推奨し、別途承認があればcloud参照を追加してCへ段階的に進みます。速度・精度・ピークメモリはUNKNOWNです。既存socket遮断を残したbroker、正しいtoken計数、usage/予約台帳、鍵を継承しないworker環境、schema subsetの検査を先に実装します。v1のPolicy/seed定数を書き換えず、新しい比較v2と未使用の保留条件を用意します。
 
 今回は資料のみを追加し、モデル・runtime・APIキーを取得していません。Phase 4Bの導入/接続/費用は今回の見積もりから許可されたとは扱いません。実ゲームへの接続は次Phaseでも行いません。
+
+## Phase 4B1完了後・Phase 4B2への引継ぎ
+
+Phase 4Aの8a96055は承認後push済みです。[B1設計](phase4b1_inference.md)・[検証](phase4b1_validation.md)・[B2実施計画](phase4b2_handoff.md)を現在の契約とします。旧ログと比較v1は維持し、閉じたIPC、モデル別counter binding、予算予約、usage照合、schema subset、推論sidecarと比較v2を追加しました。新しいB2条件は設計のみで、B1 CLIから実行できません。
+
+B2はQwen3.5-4B/Q4_K_M＋Ollamaを条件付き候補とし、取得対象・ライセンス・容量・保存先・runtime版を確認してから別途承認された範囲で導入します。実tokenizer/templateの正確な計数とusage校正が通るまで生成しません。Policyのsocket遮断は維持し、通信先を固定したbroker transportを別途監査・実装します。mockのbyte数、価格、判断結果を実モデルへ流用しません。開発だけで調整し、ソース・prompt・条件を固定してから新しい保留評価を開きます。
